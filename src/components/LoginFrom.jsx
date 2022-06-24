@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import swal from "sweetalert";
+import { InVisibleEye, VisibleEye } from "./common/Icon";
 const LoginFrom = () => {
   const initialValues = {
     username: "",
     email: "",
     password: "",
+    confirmPassword: "",
   };
   const [formInitialValue, setFormInitialValue] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(false);
+  const [passwordType, setPasswordType] = useState("password");
+  const [confirmPasswordType, setConfirmPasswordType] = useState("password");
 
   const handleSubmit = (e) => {
     setFormErrors(true);
@@ -16,7 +20,8 @@ const LoginFrom = () => {
     if (
       formInitialValue.username &&
       formInitialValue.email &&
-      formInitialValue.password !== "" &&
+      formInitialValue.password &&
+      (formInitialValue.confirmPassword !== formInitialValue.password) == "" &&
       validate
     ) {
       swal("Done", "Something went correct!", "success");
@@ -26,6 +31,7 @@ const LoginFrom = () => {
         username: "",
         email: "",
         password: "",
+        confirmPassword: "",
       });
     } else {
       swal("Oops", "Something went wrong!", "error");
@@ -38,7 +44,22 @@ const LoginFrom = () => {
     }
     return false;
   }
-
+  const togglePassword = (e) => {
+    e.preventDefault();
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
+  const toggleConfirmPassword = (e) => {
+    e.preventDefault();
+    if (confirmPasswordType === "password") {
+      setConfirmPasswordType("text");
+      return;
+    }
+    setConfirmPasswordType("password");
+  };
   return (
     <>
       <div className="container my-3">
@@ -84,7 +105,6 @@ const LoginFrom = () => {
                     }
                   />
                 </div>
-
                 <p className="text-danger mb-0">
                   {formErrors && formInitialValue.email === ""
                     ? "Email is required"
@@ -92,23 +112,76 @@ const LoginFrom = () => {
                 </p>
                 <div className="field mt-3 mt-lg-4  d-flex flex-column">
                   <label className="mb-2"> Password</label>
-                  <input
-                    className="p-2"
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={formInitialValue.password}
-                    onChange={(e) =>
-                      setFormInitialValue({
-                        ...formInitialValue,
-                        password: e.target.value,
-                      })
-                    }
-                  />
+                  <div className="position-relative">
+                    <input
+                      className="p-2 w-100"
+                      type={passwordType}
+                      name="password"
+                      placeholder="Password"
+                      value={formInitialValue.password}
+                      onChange={(e) =>
+                        setFormInitialValue({
+                          ...formInitialValue,
+                          password: e.target.value,
+                        })
+                      }
+                    />
+                    <div className="position-absolute eye_box  ">
+                      <button
+                        className="bg-transparent border-0 p-0 "
+                        onClick={togglePassword}
+                      >
+                        {passwordType === "password" ? (
+                          <InVisibleEye />
+                        ) : (
+                          <VisibleEye />
+                        )}
+                      </button>
+                    </div>
+                  </div>
                 </div>
                 <p className="text-danger mb-0">
                   {formErrors && formInitialValue.password === ""
                     ? "Password is required"
+                    : ""}
+                </p>
+                <div className="field mt-3 mt-lg-4  d-flex flex-column">
+                  <label className="mb-2">Confirm Password</label>
+                  <div className="position-relative">
+                    <input
+                      className="p-2 w-100"
+                      type={confirmPasswordType}
+                      name="confirmpassword"
+                      placeholder="Confirm Password"
+                      value={formInitialValue.confirmPassword}
+                      onChange={(e) =>
+                        setFormInitialValue({
+                          ...formInitialValue,
+                          confirmPassword: e.target.value,
+                        })
+                      }
+                    />
+                    <div className="position-absolute eye_box  ">
+                      <button
+                        className="bg-transparent border-0 p-0 "
+                        onClick={toggleConfirmPassword}
+                      >
+                        {confirmPasswordType === "password" ? (
+                          <InVisibleEye />
+                        ) : (
+                          <VisibleEye />
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-danger mb-0">
+                  {formErrors && formInitialValue.confirmPassword === ""
+                    ? "Password is required"
+                    : formErrors &&
+                      formInitialValue.confirmPassword !==
+                        formInitialValue.password
+                    ? "Password Does not match"
                     : ""}
                 </p>
                 <button
