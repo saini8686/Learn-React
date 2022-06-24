@@ -175,10 +175,25 @@ const LoginFrom = () => {
                     </div>
                   </div>
                 </div>
+                {console.log(
+                  formInitialValue.confirmPassword &&
+                    formInitialValue.password === ""
+                )}
                 <p className="text-danger mb-0">
+                  {/* {formErrors && formInitialValue.confirmPassword === ""
+                    ? "Password is required"
+                    : formInitialValue.confirmPassword &&
+                      formInitialValue.password === ""
+                    ? ""
+                    : formInitialValue.password !== formInitialValue.password
+                    ? "Password Does not match"
+                    : ""} */}
                   {formErrors && formInitialValue.confirmPassword === ""
                     ? "Password is required"
-                    : formErrors &&
+                    : formInitialValue.confirmPassword === "" &&
+                      formInitialValue.password === ""
+                    ? ""
+                    : formInitialValue.confirmPassword !== "" &&
                       formInitialValue.confirmPassword !==
                         formInitialValue.password
                     ? "Password Does not match"
