@@ -1,19 +1,19 @@
 import React from "react";
 
-const Star = ({ starId, marked }) => {
-  return (
-    <span
-      star-id={starId}
-      role="button"
-      style={{ color: "#ff9933", cursor: "pointer" }}
-    >
-      {marked ? "\u2605" : "\u2606"}
-    </span>
-  );
-};
-
-// Create an array of 5: Array.from({length: 5}, (v,i) => i)
 const StarRating = (props) => {
+  const Star = ({ starId, marked }) => {
+    return (
+      <span
+        star-id={starId}
+        role="button"
+        style={{ color: "#ff9933", cursor: "pointer" }}
+      >
+        {marked ? "\u2605" : "\u2606"}
+      </span>
+    );
+  };
+
+  // Create an array of 5: Array.from({length: 5}, (v,i) => i)
   const [selection, setSelection] = React.useState(0);
 
   // Manages rating selection
