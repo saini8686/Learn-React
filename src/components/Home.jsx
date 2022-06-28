@@ -26,7 +26,6 @@ const Home = () => {
     }
   };
   useEffect(() => {
-    console.log(formInitialErrors);
     if (Object.keys(formInitialErrors).length === 0 && isSubmit) {
     }
   }, [formInitialErrors]);
@@ -59,7 +58,7 @@ const Home = () => {
   };
   return (
     <>
-      <div className="container my-3">
+      <div className="container my-4 my-lg-5">
         <div className="row justify-content-center">
           <div className="col-md-6 col-xl-5 col-xxl-4">
             {Object.keys(formInitialErrors).length === 0 && isSubmit ? (

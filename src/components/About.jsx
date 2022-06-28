@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import { Rating } from "react-simple-star-rating";
 const About = () => {
-  const [ratingValue, setRatingValue] = useState(0);
+  const [rating, setRating] = useState(0); // initial rating value
 
+  // Catch Rating value
   const handleRating = (rate) => {
-    setRatingValue(rate);
+    setRating(rate);
+    // other logic
   };
   return (
     <>
       <div>
         <Rating
           onClick={handleRating}
-          ratingValue={ratingValue}
+          ratingValue={rating}
           allowHover={false}
         />
-        <Rating />
       </div>
     </>
   );

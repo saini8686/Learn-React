@@ -1,17 +1,34 @@
 import React, { useState } from "react";
 import swal from "sweetalert";
+import Table from "react-bootstrap/Table";
 import { InVisibleEye, VisibleEye } from "./common/Icon";
-const LoginFrom = () => {
+const LoginFromSecond = () => {
   const initialValues = {
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
   };
+
   const [formInitialValue, setFormInitialValue] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(false);
+  const [showTable, setShowTable] = useState(false);
   const [passwordType, setPasswordType] = useState("password");
   const [confirmPasswordType, setConfirmPasswordType] = useState("password");
+  const [existValue, setExistValue] = useState(false);
+  const [loginFormArray, setLoginFormArray] = useState([]);
+  const hanldeUser = (e) => {
+    const value = e.target.value;
+    setFormInitialValue({
+      ...formInitialValue,
+      username: value,
+    });
+    if (value.includes("_") && formInitialValue.username !== "") {
+      setExistValue(true);
+    } else {
+      setExistValue(false);
+    }
+  };
 
   const handleSubmit = (e) => {
     setFormErrors(true);
@@ -24,7 +41,8 @@ const LoginFrom = () => {
       (formInitialValue.confirmPassword !== formInitialValue.password) == "" &&
       validate
     ) {
-      swal("Done", "Something went correct!", "success");
+      swal("Done", "SuccessFully is Done ", "success");
+      setShowTable(true);
       setFormErrors(false);
       setFormInitialValue({
         ...formInitialValue,
@@ -36,7 +54,15 @@ const LoginFrom = () => {
     } else {
       swal("Oops", "Something went wrong!", "error");
     }
-    console.log(formInitialValue, "setFormInitialValue");
+    if (
+      formInitialValue.username &&
+      formInitialValue.email &&
+      formInitialValue.password &&
+      formInitialValue.confirmPassword !== ""
+    ) {
+      loginFormArray.push(formInitialValue);
+    }
+    // console.log(formInitialValue, "setFormInitialValue");
   };
 
   function ValidateEmail(mail) {
@@ -77,19 +103,19 @@ const LoginFrom = () => {
                     name="username"
                     placeholder="Username"
                     value={formInitialValue.username}
-                    onChange={(e) =>
-                      setFormInitialValue({
-                        ...formInitialValue,
-                        username: e.target.value,
-                      })
-                    }
+                    onChange={(e) => hanldeUser(e)}
                   />
                 </div>
-                <p className="text-danger mb-0">
-                  {formErrors && formInitialValue.username === ""
-                    ? "Username is required"
-                    : ""}
-                </p>
+                {formErrors && formInitialValue.username === "" ? (
+                  <p className="text-danger mb-0">Username is required</p>
+                ) : formInitialValue !== "" && existValue ? (
+                  <p className="text-success mb-0">Username Is exist</p>
+                ) : formInitialValue.username === "" ? (
+                  ""
+                ) : (
+                  <p className="text-danger mb-0">Username Is Does n't exist</p>
+                )}
+
                 <div className="field mt-3 mt-lg-4  d-flex flex-column">
                   <label className="mb-2"> Email</label>
                   <input
@@ -177,12 +203,6 @@ const LoginFrom = () => {
                   </div>
                 </div>
                 <p className="text-danger mb-0">
-                  {/* {formErrors && formInitialValue.confirmPassword === ""
-                    ? "Password is required"
-                    : formInitialValue.confirmPassword !==
-                      formInitialValue.password
-                    ? "Password Does not match"
-                    : ""} */}
                   {formErrors && formInitialValue.confirmPassword === ""
                     ? "Password is required"
                     : formInitialValue.confirmPassword === "" &&
@@ -205,9 +225,40 @@ const LoginFrom = () => {
             </form>
           </div>
         </div>
+
+        {showTable ? (
+          <div className="my-4 my-lg-5">
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th className="text-white">User Name</th>
+                  <th className="text-white">Gmail</th>
+                  <th className="text-white">Password</th>
+                  <th className="text-white">Confrim Password</th>
+                </tr>
+              </thead>
+              {loginFormArray && loginFormArray.length > 0
+                ? loginFormArray.map((val, index) => {
+                    return (
+                      <tbody key={index}>
+                        <tr>
+                          <td className="text-white">{val.username}</td>
+                          <td className="text-white">{val.email}</td>
+                          <td className="text-white">{val.password}</td>
+                          <td className="text-white">{val.confirmPassword}</td>
+                        </tr>
+                      </tbody>
+                    );
+                  })
+                : ""}
+            </Table>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
 };
 
-export default LoginFrom;
+export default LoginFromSecond;

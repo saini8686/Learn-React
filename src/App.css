@@ -45,3 +45,446 @@ input:focus-visible {
     right: 0%;
     transform: translate(-50%, -50%);
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
+
+/* POLICE LIGHT CSSS  */
+/* LIGHT BAR ESSENTIALS */
+.lightbar {
+    position: relative;
+    padding: 4px 10px;
+    margin: 0 auto;
+    max-width: 945px;
+    border-radius: 3px;
+}
+
+.light {
+    position: relative;
+    width: 131px;
+    margin: 0px 8px;
+    height: 54px;
+    padding: 5px 10px;
+    background-color: #222;
+    border-top: 2px solid #111;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-left: 2px solid #111;
+    border-radius: 6px;
+    -webkit-animation-duration: 800ms;
+    animation-duration: 800ms;
+    -webkit-animation-name: light;
+    animation-name: light;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    display: inline-block;
+}
+
+.inner-light {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    top: -1px;
+    left: -1px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    opacity: 0;
+}
+
+#light-1 .inner-light,
+#light-6 .inner-light {
+    z-index: 777;
+}
+
+#light-2 .inner-light,
+#light-5 .inner-light {
+    z-index: 888;
+}
+
+#light-3 .inner-light,
+#light-4 .inner-light {
+    z-index: 999;
+}
+
+.bulb {
+    display: inline-block;
+    position: relative;
+    box-shadow: 0px 0px 3px #222;
+    border-radius: 50%;
+    margin: 1px 0px 0;
+    width: 11px;
+    height: 11px;
+    z-index: 999;
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.14) 25%, rgba(255, 255, 255, 0.18) 49%, rgba(0, 0, 0, 0) 78%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+
+
+/* ANIMATION BASICS */
+.delay .bulb {
+    -webkit-animation-delay: 400ms;
+    animation-delay: 400ms;
+}
+
+.delay .inner-light {
+    -webkit-animation-delay: 400ms;
+    animation-delay: 400ms;
+}
+
+.strobe .bulb {
+    -webkit-animation-duration: 800ms;
+    animation-duration: 800ms;
+    -webkit-animation-name: bulb-strobe;
+    animation-name: bulb-strobe;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes bulb-strobe {
+
+    0%,
+    25% {
+        background: linear-gradient(155deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.14) 25%, rgba(255, 255, 255, 0.18) 49%, rgba(0, 0, 0, 0) 78%, rgba(0, 0, 0, 0.8) 100%);
+        box-shadow: 0px 0px 3px #222;
+    }
+
+    28%,
+    50% {
+        background: white;
+        box-shadow: 0px 0px 10px 4px #fff;
+    }
+
+    52%,
+    55% {
+        background: linear-gradient(155deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.14) 25%, rgba(255, 255, 255, 0.18) 49%, rgba(0, 0, 0, 0) 78%, rgba(0, 0, 0, 0.8) 100%);
+        box-shadow: 0px 0px 3px #222;
+    }
+
+    57%,
+    69% {
+        background: white;
+        box-shadow: 0px 0px 10px 4px #fff;
+    }
+
+    70%,
+    71% {
+        background: linear-gradient(155deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.14) 25%, rgba(255, 255, 255, 0.18) 49%, rgba(0, 0, 0, 0) 78%, rgba(0, 0, 0, 0.8) 100%);
+        box-shadow: 0px 0px 3px #222;
+    }
+
+    72%,
+    75% {
+        background: white;
+        box-shadow: 0px 0px 10px 4px #fff;
+    }
+
+    77%,
+    100% {
+        background: linear-gradient(155deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.14) 25%, rgba(255, 255, 255, 0.18) 49%, rgba(0, 0, 0, 0) 78%, rgba(0, 0, 0, 0.8) 100%);
+        box-shadow: 0px 0px 3px #222;
+    }
+}
+
+@keyframes bulb-strobe {
+
+    0%,
+    25% {
+        background: linear-gradient(155deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.14) 25%, rgba(255, 255, 255, 0.18) 49%, rgba(0, 0, 0, 0) 78%, rgba(0, 0, 0, 0.8) 100%);
+        box-shadow: 0px 0px 3px #222;
+    }
+
+    28%,
+    50% {
+        background: white;
+        box-shadow: 0px 0px 10px 4px #fff;
+    }
+
+    52%,
+    55% {
+        background: linear-gradient(155deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.14) 25%, rgba(255, 255, 255, 0.18) 49%, rgba(0, 0, 0, 0) 78%, rgba(0, 0, 0, 0.8) 100%);
+        box-shadow: 0px 0px 3px #222;
+    }
+
+    57%,
+    69% {
+        background: white;
+        box-shadow: 0px 0px 10px 4px #fff;
+    }
+
+    70%,
+    71% {
+        background: linear-gradient(155deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.14) 25%, rgba(255, 255, 255, 0.18) 49%, rgba(0, 0, 0, 0) 78%, rgba(0, 0, 0, 0.8) 100%);
+        box-shadow: 0px 0px 3px #222;
+    }
+
+    72%,
+    75% {
+        background: white;
+        box-shadow: 0px 0px 10px 4px #fff;
+    }
+
+    77%,
+    100% {
+        background: linear-gradient(155deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.14) 25%, rgba(255, 255, 255, 0.18) 49%, rgba(0, 0, 0, 0) 78%, rgba(0, 0, 0, 0.8) 100%);
+        box-shadow: 0px 0px 3px #222;
+    }
+}
+
+/* RED/BLUE LIGHTS */
+.strobe.blue .inner-light {
+    -webkit-animation-duration: 800ms;
+    animation-duration: 800ms;
+    -webkit-animation-name: strobe-blue;
+    animation-name: strobe-blue;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.strobe.red .inner-light {
+    -webkit-animation-duration: 800ms;
+    animation-duration: 800ms;
+    -webkit-animation-name: strobe-red;
+    animation-name: strobe-red;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes strobe-blue {
+
+    0%,
+    25% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+
+    28%,
+    50% {
+        border: 1px solid #139eff;
+        background-color: #66d2ff;
+        box-shadow: 0px 0px 100px 25px #0078ff;
+        opacity: 1;
+    }
+
+    52%,
+    55% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+
+    57%,
+    69% {
+        border: 1px solid #139eff;
+        background-color: #66d2ff;
+        box-shadow: 0px 0px 100px 25px #0078ff;
+        opacity: 1;
+    }
+
+    70%,
+    71% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+
+    72%,
+    75% {
+        border: 1px solid #139eff;
+        background-color: #66d2ff;
+        box-shadow: 0px 0px 100px 25px #0078ff;
+        opacity: 1;
+    }
+
+    77%,
+    100% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+}
+
+@keyframes strobe-blue {
+
+    0%,
+    25% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+
+    28%,
+    50% {
+        border: 1px solid #139eff;
+        background-color: #66d2ff;
+        box-shadow: 0px 0px 100px 25px #0078ff;
+        opacity: 1;
+    }
+
+    52%,
+    55% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+
+    57%,
+    69% {
+        border: 1px solid #139eff;
+        background-color: #66d2ff;
+        box-shadow: 0px 0px 100px 25px #0078ff;
+        opacity: 1;
+    }
+
+    70%,
+    71% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+
+    72%,
+    75% {
+        border: 1px solid #139eff;
+        background-color: #66d2ff;
+        box-shadow: 0px 0px 100px 25px #0078ff;
+        opacity: 1;
+    }
+
+    77%,
+    100% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes strobe-red {
+
+    0%,
+    25% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+
+    28%,
+    50% {
+        border: 1px solid #ee2819;
+        background-color: #ff3c2d;
+        box-shadow: 0px 0px 100px 25px #ff4444;
+        opacity: 1;
+    }
+
+    52%,
+    55% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+
+    57%,
+    69% {
+        border: 1px solid #ee2819;
+        background-color: #ff3c2d;
+        box-shadow: 0px 0px 100px 25px #ff4444;
+        opacity: 1;
+    }
+
+    70%,
+    71% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+
+    72%,
+    75% {
+        border: 1px solid #ee2819;
+        background-color: #ff3c2d;
+        box-shadow: 0px 0px 100px 25px #ff4444;
+        opacity: 1;
+    }
+
+    77%,
+    100% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+}
+
+@keyframes strobe-red {
+
+    0%,
+    25% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+
+    28%,
+    50% {
+        border: 1px solid #ee2819;
+        background-color: #ff3c2d;
+        box-shadow: 0px 0px 100px 25px #ff4444;
+        opacity: 1;
+    }
+
+    52%,
+    55% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+
+    57%,
+    69% {
+        border: 1px solid #ee2819;
+        background-color: #ff3c2d;
+        box-shadow: 0px 0px 100px 25px #ff4444;
+        opacity: 1;
+    }
+
+    70%,
+    71% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+
+    72%,
+    75% {
+        border: 1px solid #ee2819;
+        background-color: #ff3c2d;
+        box-shadow: 0px 0px 100px 25px #ff4444;
+        opacity: 1;
+    }
+
+    77%,
+    100% {
+        background-color: #222;
+        box-shadow: 0px 0px 0px 0px #000;
+        border: 1px solid #111;
+        opacity: 0;
+    }
+}
