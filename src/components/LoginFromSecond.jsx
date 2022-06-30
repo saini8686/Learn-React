@@ -29,7 +29,11 @@ const LoginFromSecond = () => {
       setExistValue(false);
     }
   };
-
+  const deleteHandler = (index) => {
+    const loginFormArrayNew = [...loginFormArray];
+    const result = loginFormArrayNew.filter((word, i) => i !== index);
+    setLoginFormArray(result);
+  };
   const handleSubmit = (e) => {
     setFormErrors(true);
     e.preventDefault();
@@ -226,7 +230,7 @@ const LoginFromSecond = () => {
           </div>
         </div>
 
-        {showTable ? (
+        {showTable && loginFormArray && loginFormArray.length > 0 ? (
           <div className="my-4 my-lg-5">
             <Table striped bordered hover>
               <thead>
@@ -247,6 +251,12 @@ const LoginFromSecond = () => {
                           <td className="text-white">{val.password}</td>
                           <td className="text-white">{val.confirmPassword}</td>
                         </tr>
+                        <button
+                          type="button"
+                          onClick={() => deleteHandler(index)}
+                        >
+                          delete
+                        </button>
                       </tbody>
                     );
                   })
