@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import swal from "sweetalert";
 import Table from "react-bootstrap/Table";
+import uploadimages from "../components/image/uploadImg.png";
 import { InVisibleEye, VisibleEye } from "./common/Icon";
 const LoginFromSecond = () => {
   const initialValues = {
@@ -12,7 +13,7 @@ const LoginFromSecond = () => {
 
   const [formInitialValue, setFormInitialValue] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(false);
-  const [showTable, setShowTable] = useState(false);
+  const [showTable, setShowTable] = useState(true);
   const [passwordType, setPasswordType] = useState("password");
   const [confirmPasswordType, setConfirmPasswordType] = useState("password");
   const [existValue, setExistValue] = useState(false);
@@ -69,12 +70,12 @@ const LoginFromSecond = () => {
     // console.log(formInitialValue, "setFormInitialValue");
   };
 
-  function ValidateEmail(mail) {
+  const ValidateEmail = (mail) => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
       return true;
     }
     return false;
-  }
+  };
   const togglePassword = (e) => {
     e.preventDefault();
     if (passwordType === "password") {
@@ -91,10 +92,35 @@ const LoginFromSecond = () => {
     }
     setConfirmPasswordType("password");
   };
+  const [uploadImage, setUploadImage] = useState();
+  const uploadHandler = (e) => {
+    const image = URL.createObjectURL(e.target.files[0]);
+    setUploadImage(image);
+  };
   return (
     <>
       <div className="container my-4 my-lg-5">
         <div className="row justify-content-center">
+          <div className="col-4">
+            <div>
+              <input
+                id="updloadImg"
+                className="w-100"
+                type="file"
+                hidden
+                multiple
+                accept="image/*"
+                onChange={(e) => uploadHandler(e)}
+              />
+              <label htmlFor="updloadImg">
+                {uploadImage ? (
+                  <img className="w-100" src={uploadImage} alt="uploadImg" />
+                ) : (
+                  <img className="w-100" src={uploadimages} alt="uploadImg" />
+                )}
+              </label>
+            </div>
+          </div>
           <div className="col-md-6 col-xl-5 col-xxl-4">
             <form className="form_bg p-4">
               <h1 className="mb-4">Login Form</h1>
