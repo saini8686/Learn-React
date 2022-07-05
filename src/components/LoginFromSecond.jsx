@@ -173,6 +173,8 @@ const LoginFromSecond = () => {
                     <input
                       className="p-2 w-100"
                       type={passwordType}
+                      minLength={4}
+                      maxLength={6}
                       name="password"
                       placeholder="Password"
                       value={formInitialValue.password}
@@ -209,6 +211,8 @@ const LoginFromSecond = () => {
                       className="p-2 w-100"
                       type={confirmPasswordType}
                       name="confirmpassword"
+                      minLength={4}
+                      maxLength={6}
                       placeholder="Confirm Password"
                       value={formInitialValue.confirmPassword}
                       onChange={(e) =>
