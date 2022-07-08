@@ -3,13 +3,18 @@ import swal from "sweetalert";
 import Table from "react-bootstrap/Table";
 import uploadimages from "../components/image/uploadImg.png";
 import { InVisibleEye, VisibleEye } from "./common/Icon";
+let newArray = [];
 const LoginFromSecond = () => {
+  const [uploadImage, setUploadImage] = useState();
+
   const initialValues = {
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
+    uploadImages1: uploadImage,
   };
+  // console.log("ASxtbP", uploadImage, initialValues);
 
   const [formInitialValue, setFormInitialValue] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(false);
@@ -18,6 +23,7 @@ const LoginFromSecond = () => {
   const [confirmPasswordType, setConfirmPasswordType] = useState("password");
   const [existValue, setExistValue] = useState(false);
   const [loginFormArray, setLoginFormArray] = useState([]);
+
   const hanldeUser = (e) => {
     const value = e.target.value;
     setFormInitialValue({
@@ -65,9 +71,18 @@ const LoginFromSecond = () => {
       formInitialValue.password &&
       formInitialValue.confirmPassword !== ""
     ) {
-      loginFormArray.push(formInitialValue);
+      const data = {
+        username: formInitialValue.username,
+        email: formInitialValue.email,
+        password: formInitialValue.password,
+        confirmPassword: formInitialValue.confirmPassword,
+        uploadImage: uploadImage,
+      };
+      console.log(data, "dfghjkl");
+      const validate = ValidateEmail(formInitialValue.email);
+      newArray.push(data);
+      console.log("loginFormArray,", newArray);
     }
-    // console.log(formInitialValue, "setFormInitialValue");
   };
 
   const ValidateEmail = (mail) => {
@@ -92,9 +107,15 @@ const LoginFromSecond = () => {
     }
     setConfirmPasswordType("password");
   };
-  const [uploadImage, setUploadImage] = useState();
+  // const uploadHandler = (e) => {
+  //   const image = URL.createObjectURL(e.target.files[0]);
+  //   setUploadImage(image);
+  // };
   const uploadHandler = (e) => {
-    const image = URL.createObjectURL(e.target.files[0]);
+    let image = [];
+    for (let index = 0; index < e.target.files.length; index++) {
+      image.push(URL.createObjectURL(e.target.files[index]));
+    }
     setUploadImage(image);
   };
   return (
@@ -114,7 +135,7 @@ const LoginFromSecond = () => {
               />
               <label htmlFor="updloadImg">
                 {uploadImage ? (
-                  <img className="w-100" src={uploadImage} alt="uploadImg" />
+                  <img className="w-100" src={uploadImage[0]} alt="uploadImg" />
                 ) : (
                   <img className="w-100" src={uploadimages} alt="uploadImg" />
                 )}
@@ -260,27 +281,51 @@ const LoginFromSecond = () => {
           </div>
         </div>
 
-        {showTable && loginFormArray && loginFormArray.length > 0 ? (
+        {showTable && newArray && newArray.length > 0 ? (
           <div className="my-4 my-lg-5">
-            <Table striped bordered hover>
+            <Table striped bordered hover responsive="xxl">
               <thead>
                 <tr>
-                  <th className="text-white">User Name</th>
-                  <th className="text-white">Gmail</th>
-                  <th className="text-white">Password</th>
-                  <th className="text-white">Confrim Password</th>
+                  <th className="text-white text-nowrap">User Name</th>
+                  <th className="text-white text-nowrap">Gmail</th>
+                  <th className="text-white text-nowrap">Password</th>
+                  <th className="text-white text-nowrap">Confrim Password</th>
+                  <th className="text-white text-nowrap">Images</th>
                 </tr>
               </thead>
-              {loginFormArray && loginFormArray.length > 0
-                ? loginFormArray.map((val, index) => {
+              {newArray && newArray.length > 0
+                ? newArray.map((val, index) => {
                     return (
                       <tbody key={index}>
                         <tr>
-                          <td className="text-white">{val.username}</td>
-                          <td className="text-white">{val.email}</td>
-                          <td className="text-white">{val.password}</td>
-                          <td className="text-white">{val.confirmPassword}</td>
+                          <td className="text-white text-nowrap">
+                            {val.username}
+                          </td>
+                          <td className="text-white text-nowrap">
+                            {val.email}
+                          </td>
+                          <td className="text-white text-nowrap">
+                            {val.password}
+                          </td>
+                          <td className="text-white text-nowrap">
+                            {val.confirmPassword}
+                          </td>
+                          <td className="text-white text-nowrap">
+                            {val.uploadImage &&
+                              val.uploadImage.map((obj, index) => {
+                                return (
+                                  <span key={index}>
+                                    <img
+                                      className="img_width mx-1"
+                                      src={obj}
+                                      alt=""
+                                    />
+                                  </span>
+                                );
+                              })}
+                          </td>
                         </tr>
+
                         <button
                           type="button"
                           onClick={() => deleteHandler(index)}
