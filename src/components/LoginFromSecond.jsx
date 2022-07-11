@@ -14,7 +14,6 @@ const LoginFromSecond = () => {
     confirmPassword: "",
     uploadImages1: uploadImage,
   };
-  // console.log("ASxtbP", uploadImage, initialValues);
 
   const [formInitialValue, setFormInitialValue] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(false);
@@ -78,10 +77,9 @@ const LoginFromSecond = () => {
         confirmPassword: formInitialValue.confirmPassword,
         uploadImage: uploadImage,
       };
-      console.log(data, "dfghjkl");
+
       const validate = ValidateEmail(formInitialValue.email);
       newArray.push(data);
-      console.log("loginFormArray,", newArray);
     }
   };
 
@@ -122,8 +120,8 @@ const LoginFromSecond = () => {
     <>
       <div className="container my-4 my-lg-5">
         <div className="row justify-content-center">
-          <div className="col-4">
-            <div>
+          <div className="col-md-4 mb-4 mb-md-0">
+            <div className="text-center">
               <input
                 id="updloadImg"
                 className="w-100"
@@ -283,7 +281,7 @@ const LoginFromSecond = () => {
 
         {showTable && newArray && newArray.length > 0 ? (
           <div className="my-4 my-lg-5">
-            <Table striped bordered hover responsive="xxl">
+            <Table striped bordered hover responsive="xxxl">
               <thead>
                 <tr>
                   <th className="text-white text-nowrap">User Name</th>
