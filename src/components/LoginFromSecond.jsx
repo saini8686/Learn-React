@@ -3,7 +3,7 @@ import swal from "sweetalert";
 import Table from "react-bootstrap/Table";
 import uploadimages from "../components/image/uploadImg.png";
 import { InVisibleEye, VisibleEye } from "./common/Icon";
-let newArray = [];
+
 const LoginFromSecond = () => {
   const [uploadImage, setUploadImage] = useState();
 
@@ -14,14 +14,14 @@ const LoginFromSecond = () => {
     confirmPassword: "",
     uploadImages1: uploadImage,
   };
-
+  const [newArray, setNewArray] = useState([]);
   const [formInitialValue, setFormInitialValue] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(false);
   const [showTable, setShowTable] = useState(true);
   const [passwordType, setPasswordType] = useState("password");
   const [confirmPasswordType, setConfirmPasswordType] = useState("password");
   const [existValue, setExistValue] = useState(false);
-  const [loginFormArray, setLoginFormArray] = useState([]);
+  const [strongPassValue, setStrongPassValue] = useState(false);
 
   const hanldeUser = (e) => {
     const value = e.target.value;
@@ -35,21 +35,21 @@ const LoginFromSecond = () => {
       setExistValue(false);
     }
   };
-  const deleteHandler = (index) => {
-    const loginFormArrayNew = [...loginFormArray];
-    const result = loginFormArrayNew.filter((word, i) => i !== index);
-    setLoginFormArray(result);
-  };
+
   const handleSubmit = (e) => {
+    const validate = ValidateEmail(formInitialValue.email);
     setFormErrors(true);
     e.preventDefault();
-    const validate = ValidateEmail(formInitialValue.email);
+    // const strongPass = StrongPassword(formInitialValue.password);
     if (
       formInitialValue.username &&
       formInitialValue.email &&
       formInitialValue.password &&
       (formInitialValue.confirmPassword !== formInitialValue.password) == "" &&
-      validate
+      uploadImage !== undefined &&
+      // formInitialValue.uploadImages1 !== undefined &&
+      validate &&
+      existValue === true
     ) {
       swal("Done", "SuccessFully is Done ", "success");
       setShowTable(true);
@@ -60,15 +60,21 @@ const LoginFromSecond = () => {
         email: "",
         password: "",
         confirmPassword: "",
+        uploadImages1: "",
       });
+      console.log(formInitialValue, "newArray3333333333333");
     } else {
       swal("Oops", "Something went wrong!", "error");
     }
     if (
       formInitialValue.username &&
       formInitialValue.email &&
+      validate &&
       formInitialValue.password &&
-      formInitialValue.confirmPassword !== ""
+      uploadImage !== undefined &&
+      formInitialValue.confirmPassword !== "" &&
+      existValue === true
+      // strongPass
     ) {
       const data = {
         username: formInitialValue.username,
@@ -78,17 +84,29 @@ const LoginFromSecond = () => {
         uploadImage: uploadImage,
       };
 
-      const validate = ValidateEmail(formInitialValue.email);
       newArray.push(data);
+      console.log(newArray, "newArray");
     }
   };
-
+  const deleteHandler = (index) => {
+    const Data = [...newArray];
+    const result = Data.filter((word, i) => i !== index);
+    setNewArray(result);
+  };
   const ValidateEmail = (mail) => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
       return true;
     }
     return false;
   };
+  // var Data = formInitialValue.password;
+  // console.log("Data", Data);
+  // var reg = "/^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/";
+  // var test1 = reg.test(Data);
+  // console.log("test ", test1);
+  const passwordreg =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
   const togglePassword = (e) => {
     e.preventDefault();
     if (passwordType === "password") {
@@ -114,7 +132,8 @@ const LoginFromSecond = () => {
     for (let index = 0; index < e.target.files.length; index++) {
       image.push(URL.createObjectURL(e.target.files[index]));
     }
-    setUploadImage(image);
+    console.log("image", image[0]);
+    setUploadImage(image[0]);
   };
   return (
     <>
@@ -133,7 +152,7 @@ const LoginFromSecond = () => {
               />
               <label htmlFor="updloadImg">
                 {uploadImage ? (
-                  <img className="w-100" src={uploadImage[0]} alt="uploadImg" />
+                  <img className="w-100" src={uploadImage} alt="uploadImg" />
                 ) : (
                   <img className="w-100" src={uploadimages} alt="uploadImg" />
                 )}
@@ -192,8 +211,8 @@ const LoginFromSecond = () => {
                     <input
                       className="p-2 w-100"
                       type={passwordType}
-                      minLength={4}
-                      maxLength={6}
+                      minLength={8}
+                      maxLength={32}
                       name="password"
                       placeholder="Password"
                       value={formInitialValue.password}
@@ -218,11 +237,16 @@ const LoginFromSecond = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-danger mb-0">
-                  {formErrors && formInitialValue.password === ""
-                    ? "Password is required"
-                    : ""}
-                </p>
+
+                {formErrors && formInitialValue.password === "" ? (
+                  <p>Password is required</p>
+                ) : formErrors &&
+                  passwordreg.test(formInitialValue.password) === false ? (
+                  <p>Password is not strong</p>
+                ) : (
+                  ""
+                )}
+
                 <div className="field mt-3 mt-lg-4  d-flex flex-column">
                   <label className="mb-2">Confirm Password</label>
                   <div className="position-relative">
@@ -230,8 +254,8 @@ const LoginFromSecond = () => {
                       className="p-2 w-100"
                       type={confirmPasswordType}
                       name="confirmpassword"
-                      minLength={4}
-                      maxLength={6}
+                      minLength={8}
+                      maxLength={32}
                       placeholder="Confirm Password"
                       value={formInitialValue.confirmPassword}
                       onChange={(e) =>
@@ -257,7 +281,7 @@ const LoginFromSecond = () => {
                 </div>
                 <p className="text-danger mb-0">
                   {formErrors && formInitialValue.confirmPassword === ""
-                    ? "Password is required"
+                    ? "Confirm Password is required"
                     : formInitialValue.confirmPassword === "" &&
                       formInitialValue.password === ""
                     ? ""
@@ -289,48 +313,53 @@ const LoginFromSecond = () => {
                   <th className="text-white text-nowrap">Password</th>
                   <th className="text-white text-nowrap">Confrim Password</th>
                   <th className="text-white text-nowrap">Images</th>
+                  <th className="text-white text-nowrap">Status</th>
                 </tr>
               </thead>
               {newArray && newArray.length > 0
                 ? newArray.map((val, index) => {
                     return (
-                      <tbody key={index}>
-                        <tr>
-                          <td className="text-white text-nowrap">
-                            {val.username}
-                          </td>
-                          <td className="text-white text-nowrap">
-                            {val.email}
-                          </td>
-                          <td className="text-white text-nowrap">
-                            {val.password}
-                          </td>
-                          <td className="text-white text-nowrap">
-                            {val.confirmPassword}
-                          </td>
-                          <td className="text-white text-nowrap">
-                            {val.uploadImage &&
-                              val.uploadImage.map((obj, index) => {
-                                return (
-                                  <span key={index}>
-                                    <img
-                                      className="img_width mx-1"
-                                      src={obj}
-                                      alt=""
-                                    />
-                                  </span>
-                                );
-                              })}
-                          </td>
-                        </tr>
-
-                        <button
-                          type="button"
-                          onClick={() => deleteHandler(index)}
-                        >
-                          delete
-                        </button>
-                      </tbody>
+                      <>
+                        <tbody key={index}>
+                          <tr>
+                            <td className="text-white text-nowrap">
+                              {val.username}
+                            </td>
+                            <td className="text-white text-nowrap">
+                              {val.email}
+                            </td>
+                            <td className="text-white text-nowrap">
+                              {val.password}
+                            </td>
+                            <td className="text-white text-nowrap">
+                              {val.confirmPassword}
+                            </td>
+                            <td className="text-white text-nowrap">
+                              {val.uploadImage &&
+                                val.uploadImage.map((obj, index) => {
+                                  return (
+                                    <span key={index}>
+                                      <img
+                                        className="img_width mx-1"
+                                        src={obj}
+                                        alt=""
+                                      />
+                                    </span>
+                                  );
+                                })}
+                            </td>
+                            <td className="text-white text-nowrap">
+                              <button
+                                className="bg-warning border-0 rounded-pill px-3"
+                                type="button"
+                                onClick={() => deleteHandler(index)}
+                              >
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </>
                     );
                   })
                 : ""}

@@ -1,14 +1,14 @@
 import React from "react";
-import policeAudio from "../components/audio//mixkit-police-siren-us-1643.wav";
-import ReactAudioPlayer from "react-audio-player";
+// import policeAudio from "../components/audio//mixkit-police-siren-us-1643.wav";
+// import ReactAudioPlayer from "react-audio-player";
 const PoliceLight = () => {
-  const toggleMuted = () => {
-    var sound = document.getElementById("sound");
-    sound.muted = !sound.muted;
-  };
+  // const toggleMuted = () => {
+  //   var sound = document.getElementById("sound");
+  //   sound.muted = !sound.muted;
+  // };
   return (
     <>
-      <div className="lightbar">
+      <div className="lightbar pb-5">
         <div id="light-1" className="light strobe blue">
           <div className="inner-light"></div>
           <span className="bulb"></span>
@@ -136,7 +136,6 @@ const PoliceLight = () => {
           <span className="bulb"></span>
         </div>
       </div>
-
       {/* <ReactAudioPlayer src={policeAudio} autoPlay controls loop /> */}
     </>
   );

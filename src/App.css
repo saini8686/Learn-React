@@ -2,8 +2,10 @@
     color: red
 }
 
-body {
+body,
+html {
     background-color: black !important;
+    overflow-x: hidden;
 }
 
 .form_bg {
@@ -493,4 +495,142 @@ input:focus-visible {
     width: 40px;
     height: 40px;
     object-fit: cover;
+}
+
+.upload_image_width {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+@media (min-width:1200px) {
+    .animate_slider ul li:nth-child(1) {
+        margin-left: 30px !important;
+    }
+}
+
+@media (min-width:1300px) {
+    .animate_slider ul li:nth-child(1) {
+        margin-left: 110px !important;
+    }
+}
+
+@media (min-width:1400px) {
+    .animate_slider ul li:nth-child(1) {
+        margin-left: 60px !important;
+    }
+}
+
+@media (min-width:1500px) {
+    .animate_slider ul li:nth-child(1) {
+        margin-left: 140px !important;
+    }
+}
+
+@media (min-width:1600px) {
+    .animate_slider ul li:nth-child(1) {
+        margin-left: 292px !important;
+    }
+}
+
+
+
+.slider_box {
+    position: relative;
+    flex: 1 0 auto;
+    height: 400px;
+    width: 400px;
+    background-color: #ee2819;
+    color: white;
+    box-shadow: 0 4px 8pxrgba(0, 0, 0, .08),
+        0 8px 24pxrgba(51, 55, 59, .04),
+        0 6px 30pxrgba(51, 55, 59, .04);
+    border-radius: 0.5rem;
+}
+
+.main_box {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    cursor: grab;
+}
+
+.main_box::-webkit-scrollbar {
+    display: none !important;
+}
+
+
+.gsap_animation_box {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    cursor: grab;
+}
+
+.gsap_animation_box_active {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+}
+
+.gsap_animation_box div:nth-child(1) {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    transition: all 0.6s ease-in-out;
+    left: 0%;
+    top: 0%;
+    z-index: 2;
+}
+
+.gsap_animation_box div:nth-child(2) {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    left: 25%;
+    top: 22%;
+    transition: all 0.6s ease-in-out;
+}
+
+.gsap_animation_box div:nth-child(3) {
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    left: 65%;
+    top: 60%;
+    transition: all 0.6s ease-in-out;
+}
+
+.gsap_animation_box_active div:nth-child(1) {
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    left: 18%;
+    top: 14%;
+    z-index: 2;
+    transition: all 0.6s ease-in-out;
+    cursor: grabbing !important;
+}
+
+.gsap_animation_box_active div:nth-child(2) {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    left: 25%;
+    top: 22%;
+    transition: all 0.6s ease-in-out;
+    cursor: grabbing !important;
+}
+
+.gsap_animation_box_active div:nth-child(3) {
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    left: 50%;
+    top: 45%;
+    transition: all 0.6s ease-in-out;
+    cursor: grabbing !important;
 }

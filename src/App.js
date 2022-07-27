@@ -10,7 +10,12 @@ import LoginFrom from "./components/LoginFrom";
 import SignUpFrom from "./components/SignUpFrom";
 import PoliceLight from "./components/PoliceLight";
 import LoginFromSecond from "./components/LoginFromSecond";
+import AOS from "aos";
+import "aos/dist/aos.css";
 function App() {
+  AOS.init({
+    once: true,
+  });
   return (
     <div className="App">
       <Router>
