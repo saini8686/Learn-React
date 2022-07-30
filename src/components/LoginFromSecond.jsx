@@ -62,7 +62,7 @@ const LoginFromSecond = () => {
         confirmPassword: "",
         uploadImages1: "",
       });
-      console.log(formInitialValue, "newArray3333333333333");
+      setUploadImage("");
     } else {
       swal("Oops", "Something went wrong!", "error");
     }
@@ -88,6 +88,7 @@ const LoginFromSecond = () => {
       console.log(newArray, "newArray");
     }
   };
+
   const deleteHandler = (index) => {
     const Data = [...newArray];
     const result = Data.filter((word, i) => i !== index);
@@ -132,8 +133,7 @@ const LoginFromSecond = () => {
     for (let index = 0; index < e.target.files.length; index++) {
       image.push(URL.createObjectURL(e.target.files[index]));
     }
-    console.log("image", image[0]);
-    setUploadImage(image[0]);
+    setUploadImage(image);
   };
   return (
     <>
@@ -152,7 +152,7 @@ const LoginFromSecond = () => {
               />
               <label htmlFor="updloadImg">
                 {uploadImage ? (
-                  <img className="w-100" src={uploadImage} alt="uploadImg" />
+                  <img className="w-100" src={uploadImage[0]} alt="uploadImg" />
                 ) : (
                   <img className="w-100" src={uploadimages} alt="uploadImg" />
                 )}
@@ -318,6 +318,7 @@ const LoginFromSecond = () => {
               </thead>
               {newArray && newArray.length > 0
                 ? newArray.map((val, index) => {
+                    console.log("newArrayddddddddddd", val);
                     return (
                       <>
                         <tbody key={index}>
