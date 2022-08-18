@@ -239,10 +239,10 @@ const LoginFromSecond = () => {
                 </div>
 
                 {formErrors && formInitialValue.password === "" ? (
-                  <p>Password is required</p>
+                  <p className="text-danger">Password is required</p>
                 ) : formErrors &&
                   passwordreg.test(formInitialValue.password) === false ? (
-                  <p>Password is not strong</p>
+                  <p className="text-warning">Password is not strong</p>
                 ) : (
                   ""
                 )}
