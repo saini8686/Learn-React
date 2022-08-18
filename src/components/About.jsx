@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Rating } from "react-simple-star-rating";
+import Input from "./Input";
+import Toggle from "./Toggle";
 const About = () => {
   const [rating, setRating] = useState(0); // initial rating value
 
@@ -16,6 +18,8 @@ const About = () => {
           ratingValue={rating}
           allowHover={false}
         />
+
+        <Toggle />
       </div>
     </>
   );
