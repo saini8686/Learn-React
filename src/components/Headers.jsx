@@ -107,6 +107,17 @@ const Headers = ({ history }) => {
         >
           Locomotive Animation
         </h6>
+        <h6
+          onClick={() => {
+            history.push("/roadmap");
+            setActive("/roadmap");
+          }}
+          className={`${
+            active === "/roadmap" ? "active" : "text-white "
+          } mx-2 cursor-pointer`}
+        >
+          Roadmap
+        </h6>
       </div>
     </div>
   );

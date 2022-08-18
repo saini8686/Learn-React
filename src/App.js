@@ -15,6 +15,7 @@ import "aos/dist/aos.css";
 import LottieAnimation from "./components/LottieAnimation";
 import LocomotiveAnimation from "./components/LocomotiveAnimation";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+import Roadmap from "./components/Roadmap";
 
 function App() {
   const containerRef = useRef(null);
@@ -52,6 +53,7 @@ function App() {
               <Route exact path="/light" component={PoliceLight} />
               <Route exact path="/lottie" component={LottieAnimation} />
               <Route exact path="/locomotive" component={LocomotiveAnimation} />
+              <Route exact path="/roadmap" component={Roadmap} />
             </Switch>
           </Router>
         </div>
