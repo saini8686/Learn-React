@@ -16,6 +16,7 @@ import LottieAnimation from "./components/LottieAnimation";
 import LocomotiveAnimation from "./components/LocomotiveAnimation";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import Roadmap from "./components/Roadmap";
+import NotFound from "./NotFound";
 
 function App() {
   const containerRef = useRef(null);
@@ -54,6 +55,7 @@ function App() {
               <Route exact path="/lottie" component={LottieAnimation} />
               <Route exact path="/locomotive" component={LocomotiveAnimation} />
               <Route exact path="/roadmap" component={Roadmap} />
+              <Route exact path="" component={NotFound} />
             </Switch>
           </Router>
         </div>
