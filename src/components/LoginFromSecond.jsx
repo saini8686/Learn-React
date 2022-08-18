@@ -137,7 +137,7 @@ const LoginFromSecond = () => {
   };
   return (
     <>
-      <div className="container my-4 my-lg-5">
+      <div className="container my-4 my-lg-5 py-5">
         <div className="row justify-content-center">
           <div className="col-md-4 mb-4 mb-md-0">
             <div className="text-center">

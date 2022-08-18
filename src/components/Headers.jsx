@@ -7,8 +7,8 @@ const Headers = ({ history }) => {
 
   return (
     <div>
-      <div className="d-flex flex-wrap">
-        <h1
+      <div className="d-flex flex-wrap position-relative z-index-100">
+        <h6
           onClick={() => {
             history.push("/");
             setActive("/");
@@ -18,8 +18,8 @@ const Headers = ({ history }) => {
           }  mx-2 cursor-pointer`}
         >
           Home
-        </h1>
-        <h1
+        </h6>
+        <h6
           onClick={() => {
             history.push("/signup");
             setActive("/signup");
@@ -29,8 +29,8 @@ const Headers = ({ history }) => {
           } mx-2 cursor-pointer`}
         >
           Sign Up
-        </h1>
-        <h1
+        </h6>
+        <h6
           onClick={() => {
             history.push("/login");
             setActive("/login");
@@ -40,8 +40,8 @@ const Headers = ({ history }) => {
           } mx-2 cursor-pointer`}
         >
           Login
-        </h1>
-        <h1
+        </h6>
+        <h6
           onClick={() => {
             history.push("/loginsecond");
             setActive("/loginsecond");
@@ -51,8 +51,8 @@ const Headers = ({ history }) => {
           } mx-2 cursor-pointer`}
         >
           Login Second
-        </h1>
-        <h1
+        </h6>
+        <h6
           onClick={() => {
             history.push("/about");
             setActive("/about");
@@ -62,8 +62,8 @@ const Headers = ({ history }) => {
           } mx-2 cursor-pointer`}
         >
           About
-        </h1>
-        <h1
+        </h6>
+        <h6
           onClick={() => {
             history.push("/star");
             setActive("/star");
@@ -73,8 +73,8 @@ const Headers = ({ history }) => {
           } mx-2 cursor-pointer`}
         >
           Star
-        </h1>
-        <h1
+        </h6>
+        <h6
           onClick={() => {
             history.push("/light");
             setActive("/light");
@@ -84,7 +84,29 @@ const Headers = ({ history }) => {
           } mx-2 cursor-pointer`}
         >
           Police Light
-        </h1>
+        </h6>
+        <h6
+          onClick={() => {
+            history.push("/lottie");
+            setActive("/lottie");
+          }}
+          className={`${
+            active === "/lottie" ? "active" : "text-white "
+          } mx-2 cursor-pointer`}
+        >
+          Lottie Animation
+        </h6>
+        <h6
+          onClick={() => {
+            history.push("/locomotive");
+            setActive("/locomotive");
+          }}
+          className={`${
+            active === "/locomotive" ? "active" : "text-white "
+          } mx-2 cursor-pointer`}
+        >
+          Locomotive Animation
+        </h6>
       </div>
     </div>
   );
