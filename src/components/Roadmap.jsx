@@ -1,71 +1,41 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { StraightDivider } from "../components/common/Icon";
 import { data } from "./RoadmapData";
 
-gsap.registerPlugin(ScrollTrigger);
 const Roadmap = () => {
-  const flameAndAcitveLineHandler = () => {
-    //=============== GSAP SCROLL-TRIGGER ANIMATION (FIRE FLAME AND ACTIVE LINE) ==================//
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".rc-roadmap-wrapper",
-        scrub: true,
-        start: "top center",
-        end: "100% center",
-      },
-      defaults: {
-        ease: "none",
-      },
-    });
-    tl.fromTo(
-      ".rc-roadmap-fire",
-      {
-        top: "0%",
-        y: "-50%",
-      },
-      {
-        top: "100%",
-      }
-    );
+  //=============== GSAP SCROLL-TRIGGER ANIMATION (FIRE FLAME AND ACTIVE LINE) ==================//
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-    let t2 = gsap.timeline({
+    let eight = gsap.timeline({
       scrollTrigger: {
-        trigger: ".rc-roadmap-wrapper",
-        scrub: true,
-        start: "top center",
-        end: "100% center",
-      },
-      defaults: {
-        ease: "none",
+        trigger: ".roadmao_line_fill",
+        start: "top 30%",
+        end: "bottom top",
+        markers: true,
+        scrub: 1,
       },
     });
-    t2.fromTo(
-      ".rc-roadmap-active-line",
-      {
-        height: "0px",
-      },
-      {
-        height: "100%",
-      }
-    );
-  };
-  useEffect(() => {
-    flameAndAcitveLineHandler();
+    eight.to(".roadmap_line", { height: "100%" });
   }, []);
 
   return (
     <>
       <div className="blank_box"></div>
 
-      <div className="pt-4"></div>
-      <section id="roadmap" className=" my-0 pt-sm-5 observer-section">
+      {/* <div className="pt-4"></div> */}
+      <section
+        id="roadmap"
+        className=" my-0 observer-section position-relative"
+      >
         <div className="col-9 col-xl-12 mx-auto  d-flex justify-content-center">
           <h1>Roadmap</h1>
         </div>
-        <div className="container py-5 text-white py-sm-5">
+        <div className="container pb-5 text-white pb-sm-5 roadmao_line_fill ">
+          <div className="roadmap_line"></div>
           <div className="rc-roadmap-wrapper my-5 ">
             <div className="rc-roadmap-active-line"></div>
             <div className="rc-roadmap-fire"></div>
