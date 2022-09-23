@@ -21,7 +21,7 @@ const LoginFrom = () => {
       formInitialValue.username &&
       formInitialValue.email &&
       formInitialValue.password &&
-      (formInitialValue.confirmPassword !== formInitialValue.password) == "" &&
+      (formInitialValue.confirmPassword !== formInitialValue.password) === "" &&
       validate
     ) {
       swal("Done", "Something went correct!", "success");

@@ -1194,3 +1194,8 @@ html.has-scroll-dragging {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+.chats button:disabled {
+    opacity: 0.1 !important;
+    background-color: white !important;
+}

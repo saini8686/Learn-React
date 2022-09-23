@@ -45,7 +45,7 @@ const LoginFromSecond = () => {
       formInitialValue.username &&
       formInitialValue.email &&
       formInitialValue.password &&
-      (formInitialValue.confirmPassword !== formInitialValue.password) == "" &&
+      (formInitialValue.confirmPassword !== formInitialValue.password) === "" &&
       uploadImage !== undefined &&
       // formInitialValue.uploadImages1 !== undefined &&
       validate &&
