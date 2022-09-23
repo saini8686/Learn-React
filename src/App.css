@@ -1152,3 +1152,45 @@ html.has-scroll-dragging {
         opacity: 1;
     }
 }
+
+
+.chats {
+    background-color: #1ebea5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.chats .title {
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    font-size: 40pt;
+}
+
+.chats .library {
+    width: 600px;
+    max-width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    padding: 16px;
+}
+
+.chats input,
+.chats button {
+    width: 100%;
+    font-family: inherit;
+    font-size: 16pt;
+    padding: 0.4em;
+    margin: 0 0 20px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

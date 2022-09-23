@@ -19,6 +19,7 @@ import Roadmap from "./components/Roadmap";
 import NotFound from "./NotFound";
 import ChangeColorBoxOnType from "./components/ChangeColorBoxOnType";
 import TypeWriterAnimation from "./components/TypeWriterAnimation";
+import WhatsApp from "./components/WhatsApp";
 
 function App() {
   const containerRef = useRef(null);
@@ -57,6 +58,7 @@ function App() {
               <Route exact path="/lottie" component={LottieAnimation} />
               <Route exact path="/locomotive" component={LocomotiveAnimation} />
               <Route exact path="/roadmap" component={Roadmap} />
+              <Route exact path="/whatsapp" component={WhatsApp} />
 
               <Route
                 exact

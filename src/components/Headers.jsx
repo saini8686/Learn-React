@@ -140,6 +140,17 @@ const Headers = ({ history }) => {
         >
           typewriter
         </h6>
+        <h6
+          onClick={() => {
+            history.push("/whatsapp");
+            setActive("/whatsapp");
+          }}
+          className={`${
+            active === "/whatsapp" ? "active" : "text-white "
+          } mx-2 cursor-pointer`}
+        >
+          WhatsApp
+        </h6>
       </div>
     </div>
   );
