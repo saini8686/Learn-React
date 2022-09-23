@@ -9,16 +9,17 @@ const StarRating = (props) => {
   const [isOnce, setOnce] = useState(false);
   const [value, setValue] = useState(false);
 
-  const { ref, inView } = useInView({
+  const { ref, inView, entry } = useInView({
     threshold: 0,
   });
+  console.log(entry, "iseiofkdikf");
 
   useEffect(() => {
     if (inView) {
       setOnce(true);
     }
   }, [inView]);
-
+  console.log(inView, "dfgfdgfgf");
   const Star = ({ starId, marked }) => {
     return (
       <span

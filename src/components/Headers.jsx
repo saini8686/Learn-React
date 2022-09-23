@@ -118,6 +118,39 @@ const Headers = ({ history }) => {
         >
           Roadmap
         </h6>
+        <h6
+          onClick={() => {
+            history.push("/curvedshape");
+            setActive("/curvedshape");
+          }}
+          className={`${
+            active === "/curvedshape" ? "active" : "text-white "
+          } mx-2 cursor-pointer`}
+        >
+          BottomCurvedShape
+        </h6>
+        <h6
+          onClick={() => {
+            history.push("/changecolor");
+            setActive("/changecolor");
+          }}
+          className={`${
+            active === "/changecolor" ? "active" : "text-white "
+          } mx-2 cursor-pointer`}
+        >
+          Change Color Box On Type In Input
+        </h6>
+        <h6
+          onClick={() => {
+            history.push("/typewriter");
+            setActive("/typewriter");
+          }}
+          className={`${
+            active === "/typewriter" ? "active" : "text-white "
+          } mx-2 cursor-pointer`}
+        >
+          typewriter
+        </h6>
       </div>
     </div>
   );

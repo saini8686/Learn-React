@@ -17,6 +17,9 @@ import LocomotiveAnimation from "./components/LocomotiveAnimation";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import Roadmap from "./components/Roadmap";
 import NotFound from "./NotFound";
+import BottomCurvedShape from "./components/BottomCurvedShape";
+import ChangeColorBoxOnType from "./components/ChangeColorBoxOnType";
+import TypeWriterAnimation from "./components/TypeWriterAnimation";
 
 function App() {
   const containerRef = useRef(null);
@@ -55,6 +58,13 @@ function App() {
               <Route exact path="/lottie" component={LottieAnimation} />
               <Route exact path="/locomotive" component={LocomotiveAnimation} />
               <Route exact path="/roadmap" component={Roadmap} />
+              <Route exact path="/curvedshape" component={BottomCurvedShape} />
+              <Route
+                exact
+                path="/changecolor"
+                component={ChangeColorBoxOnType}
+              />
+              <Route exact path="/typewriter" component={TypeWriterAnimation} />
               <Route exact path="" component={NotFound} />
             </Switch>
           </Router>
