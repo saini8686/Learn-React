@@ -1,6 +1,4 @@
-import React, { useRef } from "react";
-import LocomotiveScroll from "locomotive-scroll";
-// import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+import React from "react";
 
 const LocomotiveAnimation = () => {
   return (

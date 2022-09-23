@@ -28,7 +28,7 @@ const Home = () => {
   useEffect(() => {
     if (Object.keys(formInitialErrors).length === 0 && isSubmit) {
     }
-  }, [formInitialErrors]);
+  }, [formInitialErrors, isSubmit]);
 
   const validate = (values) => {
     const errors = {};

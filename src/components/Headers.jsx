@@ -120,17 +120,6 @@ const Headers = ({ history }) => {
         </h6>
         <h6
           onClick={() => {
-            history.push("/curvedshape");
-            setActive("/curvedshape");
-          }}
-          className={`${
-            active === "/curvedshape" ? "active" : "text-white "
-          } mx-2 cursor-pointer`}
-        >
-          BottomCurvedShape
-        </h6>
-        <h6
-          onClick={() => {
             history.push("/changecolor");
             setActive("/changecolor");
           }}

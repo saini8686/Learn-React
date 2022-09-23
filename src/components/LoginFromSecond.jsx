@@ -21,7 +21,7 @@ const LoginFromSecond = () => {
   const [passwordType, setPasswordType] = useState("password");
   const [confirmPasswordType, setConfirmPasswordType] = useState("password");
   const [existValue, setExistValue] = useState(false);
-  const [strongPassValue, setStrongPassValue] = useState(false);
+  // const [strongPassValue, setStrongPassValue] = useState(false);
 
   const hanldeUser = (e) => {
     const value = e.target.value;

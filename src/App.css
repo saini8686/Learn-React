@@ -1100,3 +1100,55 @@ html.has-scroll-dragging {
     display: block;
     margin-left: 24px;
 }
+
+.go-back-button {
+    background-color: #ee2819;
+    border-radius: 26px;
+    transition: all 0.4s ease-in-out;
+}
+
+.go-back-button:hover {
+    animation: jitter 0.4s ease-in-out 4 forwards;
+}
+
+@keyframes jitter {
+    0% {
+        transform: translateX(0px) translateY(0px);
+        opacity: 1;
+    }
+
+    10% {
+        transform: translateX(2px) translateY(2px);
+        opacity: 0.8;
+    }
+
+    20% {
+        transform: translateX(0px) translateY(0px);
+        opacity: 0.47;
+    }
+
+    30% {
+        transform: translateX(0px) translateY(2px);
+        opacity: 0.3;
+    }
+
+    70% {
+        transform: translateX(-1px) translateY(1px);
+        opacity: 0.96;
+    }
+
+    80% {
+        transform: translateX(0px) translateY(-2px);
+        opacity: 0.9;
+    }
+
+    90% {
+        transform: translateX(1px) translateY(-2px);
+        opacity: 0.81;
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
