@@ -8,6 +8,53 @@ html {
     /* overflow-x: hidden; */
 }
 
+:root {
+    --font-sm: 16px;
+}
+
+/* *=================MEDIA QUERISE FONT=======================*/
+@media (max-width: 1399.98px) {
+    :root {
+        --font-sm: 14px;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    :root {
+        --font-sm: 14px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    :root {
+        --font-sm: 14px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    :root {
+        --font-sm: 12px;
+    }
+
+    .pulse {
+        width: 250px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    :root {
+        --font-sm: 12px;
+    }
+
+    .pulse {
+        width: 200px;
+    }
+}
+
+.navbar-text {
+    font-size: var(--font-sm);
+}
+
 .form_bg {
     background-color: white;
     border-radius: 16px;
@@ -1196,6 +1243,46 @@ html.has-scroll-dragging {
 }
 
 .chats button:disabled {
-    opacity: 0.1 !important;
+    opacity: 0.2 !important;
     background-color: white !important;
+}
+
+.Logo {
+    width: 70px;
+    object-fit: cover;
+}
+
+.navbar-bg {
+    position: relative;
+    z-index: 10;
+    background: white;
+}
+
+
+
+.humburger-menu span {
+    width: 25px;
+    height: 3px;
+    display: block;
+    margin: 4px 0px;
+    background-color: #000;
+    border-radius: 2px;
+}
+
+.humburger-menu span:nth-child(2) {
+    transition: all 0.4s ease-in;
+}
+
+.humburger-menu:hover span:nth-child(2),
+.humburger-menu:focus span:nth-child(2) {
+    width: 20px;
+}
+
+.btn-primary:focus,
+.btn-primary:hover {
+    box-shadow: none !important;
+}
+
+.offcanvas-start {
+    width: 300px !important;
 }

@@ -4,6 +4,8 @@ import animationData from "./json/cigarette-man.json";
 import animationData2 from "./json/sweat-grinning-emoji-animation.json";
 import animationData3 from "./json/hello.json";
 import animationData4 from "./json/psychology-spiral.json";
+import PoliceLight from "./PoliceLight";
+import TypeWriterAnimation from "./TypeWriterAnimation";
 
 const LottieAnimation = () => {
   const defaultOptional = {
@@ -40,6 +42,7 @@ const LottieAnimation = () => {
   };
   return (
     <>
+      <PoliceLight />
       <div className="container">
         <div className="row">
           <div className="col-3">
@@ -72,6 +75,7 @@ const LottieAnimation = () => {
           </div>
         </div>
       </div>
+      <TypeWriterAnimation />
     </>
   );
 };

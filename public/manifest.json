@@ -1,6 +1,6 @@
 {
-  "short_name": "Learn React",
-  "name": "Only Learn",
+  "short_name": "Ks",
+  "name": "Keshav Saini",
   "icons": [
     {
       "src": "favicon.ico",
@@ -16,40 +16,6 @@
       "src": "logo512.png",
       "type": "image/png",
       "sizes": "512x512"
-    }
-  ],
-  "start_url": "/?source=pwa",
-  "background_color": "#000000",
-  "display": "standalone",
-  "scope": "/",
-  "theme_color": "#000000",
-  "shortcuts": [
-    {
-      "name": "How's weather today?",
-      "short_name": "Today",
-      "description": "Only Learn 19 August",
-      "url": "/today?source=pwa",
-      "icons": [{ "src": "/tommorrow.gif", "sizes": "192x192" }]
-    },
-    {
-      "name": "Learn React",
-      "short_name": "Tommorrow",
-      "description": "Only Learn 19 August",
-      "url": "/tomorrow?source=pwa",
-      "icons": [{ "src": "/tommorrow.gif", "sizes": "192x192" }]
-    }
-  ],
-  "description": "Only Learn 20 August",
-  "screenshots": [
-    {
-      "src": "/tommorrow.gif",
-      "type": "image/png",
-      "sizes": "540x720"
-    },
-    {
-      "src": "/tommorrow.gif",
-      "type": "image/jpg",
-      "sizes": "540x720"
     }
   ]
 }

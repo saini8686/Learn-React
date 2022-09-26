@@ -5,40 +5,37 @@ import {
   MouseParallaxChild,
   MouseParallaxContainer,
 } from "react-parallax-mouse";
+import { Rating } from "react-simple-star-rating";
+
 const StarRating = (props) => {
   const [isOnce, setOnce] = useState(false);
   const [value, setValue] = useState(false);
 
-  const { ref, inView, entry } = useInView({
+  const { ref, inView } = useInView({
     threshold: 0,
   });
-  console.log(entry, "iseiofkdikf");
 
   useEffect(() => {
     if (inView) {
       setOnce(true);
     }
   }, [inView]);
-  console.log(inView, "dfgfdgfgf");
-  const Star = ({ starId, marked }) => {
-    return (
-      <span
-        star-id={starId}
-        role="button"
-        style={{ color: "#ff9933", cursor: "pointer" }}
-      >
-        {marked ? "\u2605" : "\u2606"}
-      </span>
-    );
+
+  const [rating2, setRating2] = useState(0); // initial rating value
+  // Catch Rating value
+  const handleRating = (rate) => {
+    setRating2(rate);
+    // other logic
   };
-  // Create an array of 5: Array.from({length: 5}, (v,i) => i)
-  const [selection, setSelection] = React.useState(0);
-
-  // Manages rating selection
-  const [rating, setRating] = React.useState(0);
-
   return (
     <>
+      <div className="mt-4">
+        <Rating
+          onClick={handleRating}
+          ratingValue={rating2}
+          allowHover={false}
+        />
+      </div>
       <div className="position-relative">
         <div
           ref={ref}
@@ -66,16 +63,7 @@ const StarRating = (props) => {
             </>
           )}
         </div>
-        <div
-          onClick={(event) => setRating(event.target.getAttribute("star-id"))}
-        >
-          {Array.from({ length: 5 }, (i) => (
-            <Star
-              starId={i + 1}
-              marked={selection ? selection > i : rating > i}
-            />
-          ))}
-        </div>
+
         <MouseParallaxContainer
           className="parallax d-inline-block position-absolute top-0 mt-5 pt-5"
           resetOnLeave
@@ -103,60 +91,6 @@ const StarRating = (props) => {
               data-aos-duration="300"
               data-aos-easing="ease-in-back"
             >
-              <p className="text-white">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam
-                quam earum eos doloremque corporis, qui cumque aliquid. Tempore
-                repellat repellendus soluta tempora, atque aliquam ullam
-                maiores, quaerat perferendis labore option.
-              </p>
-              <p className="text-white">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam
-                quam earum eos doloremque corporis, qui cumque aliquid. Tempore
-                repellat repellendus soluta tempora, atque aliquam ullam
-                maiores, quaerat perferendis labore option.
-              </p>
-              <p className="text-white">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam
-                quam earum eos doloremque corporis, qui cumque aliquid. Tempore
-                repellat repellendus soluta tempora, atque aliquam ullam
-                maiores, quaerat perferendis labore option.
-              </p>
-              <p className="text-white">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam
-                quam earum eos doloremque corporis, qui cumque aliquid. Tempore
-                repellat repellendus soluta tempora, atque aliquam ullam
-                maiores, quaerat perferendis labore option.
-              </p>
-              <p className="text-white">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam
-                quam earum eos doloremque corporis, qui cumque aliquid. Tempore
-                repellat repellendus soluta tempora, atque aliquam ullam
-                maiores, quaerat perferendis labore option.
-              </p>
-              <p className="text-white">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam
-                quam earum eos doloremque corporis, qui cumque aliquid. Tempore
-                repellat repellendus soluta tempora, atque aliquam ullam
-                maiores, quaerat perferendis labore option.
-              </p>
-              <p className="text-white">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam
-                quam earum eos doloremque corporis, qui cumque aliquid. Tempore
-                repellat repellendus soluta tempora, atque aliquam ullam
-                maiores, quaerat perferendis labore option.
-              </p>
-              <p className="text-white">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam
-                quam earum eos doloremque corporis, qui cumque aliquid. Tempore
-                repellat repellendus soluta tempora, atque aliquam ullam
-                maiores, quaerat perferendis labore option.
-              </p>
-              <p className="text-white">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam
-                quam earum eos doloremque corporis, qui cumque aliquid. Tempore
-                repellat repellendus soluta tempora, atque aliquam ullam
-                maiores, quaerat perferendis labore option.
-              </p>
               <p className="text-white">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam
                 quam earum eos doloremque corporis, qui cumque aliquid. Tempore

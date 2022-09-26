@@ -8,7 +8,7 @@ const PoliceLight = () => {
   // };
   return (
     <>
-      <div className="lightbar pb-5">
+      <div className="lightbar py-5">
         <div id="light-1" className="light strobe blue">
           <div className="inner-light"></div>
           <span className="bulb"></span>

@@ -1,25 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ReactWhatsapp from "react-whatsapp";
+import MainFilter from "./Filter/MainFilter";
+import FilterData from "./FilterData";
 
 const WhatsApp = () => {
   const [number, setNumber] = useState("");
   const [message, setMessage] = useState("");
+  const ref = useRef(null);
 
+  console.log(number, "number");
   return (
     <>
       <ReactWhatsapp
         className="text-white bg-transparent border-0 text-decoration-underline my-4"
-        number="8307373978"
+        number="+918307373978"
         message="Hello Keshav saini"
       >
         Direct Chat With Me On what's app
       </ReactWhatsapp>
-      <div className="chats ">
+      <div className="chats">
         <h1 className="title text-white">React Whatsapp</h1>
         <section className="library">
           <input
             id="number"
             placeholder="Number"
+            ref={ref}
+            defaultValue="My default value"
             value={number}
             type="number"
             className="ms-2 ms-sm-0 mb-2"
@@ -45,12 +51,12 @@ const WhatsApp = () => {
           />
           <ReactWhatsapp
             className="ms-2 ms-sm-0 mb-2"
-            number={number}
+            number={`+91${number}`}
             message={message}
             disabled={
               number === "" ||
               number.length <= 9 ||
-              number.length >= 12 ||
+              number.length >= 13 ||
               message.length <= 4 ||
               message === ""
             }
@@ -59,6 +65,8 @@ const WhatsApp = () => {
           </ReactWhatsapp>
         </section>
       </div>
+      <MainFilter />
+      <FilterData />
     </>
   );
 };

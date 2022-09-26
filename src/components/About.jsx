@@ -3,11 +3,11 @@ import { Rating } from "react-simple-star-rating";
 
 import Toggle from "./Toggle";
 const About = () => {
-  const [rating, setRating] = useState(0); // initial rating value
+  const [rating2, setRating2] = useState(0); // initial rating value
 
   // Catch Rating value
   const handleRating = (rate) => {
-    setRating(rate);
+    setRating2(rate);
     // other logic
   };
   return (
@@ -15,7 +15,7 @@ const About = () => {
       <div>
         <Rating
           onClick={handleRating}
-          ratingValue={rating}
+          ratingValue={rating2}
           allowHover={false}
         />
 
