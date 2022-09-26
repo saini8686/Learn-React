@@ -1,7 +1,11 @@
 import React from "react";
-
+import SignUp from "./SignUp";
 const Home = () => {
-  return <div className="text-white">Home</div>;
+  return (
+    <>
+      <SignUp />
+    </>
+  );
 };
 
 export default Home;

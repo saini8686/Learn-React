@@ -1,31 +1,52 @@
 import React, { useState } from "react";
 import swal from "sweetalert";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { InVisibleEye, VisibleEye } from "./common/Icon";
+import { auth } from "../firebase";
 const SignUpFrom = () => {
   const initialValues = {
     email: "",
     password: "",
   };
-  const [formInitialValue, setFormInitialValue] = useState(initialValues);
+  const [formValue, setFormValue] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(false);
+  const [Loading, setLoading] = useState(false);
   const [passwordType, setPasswordType] = useState("password");
 
-  const handleSubmit = (e) => {
-    setFormErrors(true);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const validate = ValidateEmail(formInitialValue.email);
-    if (formInitialValue.email && formInitialValue.password && validate) {
-      swal("Done", "Something went correct!", "success");
-      setFormErrors(false);
-      setFormInitialValue({
-        ...formInitialValue,
-        email: "",
-        password: "",
-      });
+    setFormErrors(true);
+
+    const validate = ValidateEmail(formValue.email);
+    if (formValue.email && formValue.password && validate) {
+      setLoading(true);
+      await createUserWithEmailAndPassword(
+        auth,
+        formValue.email,
+        formValue.password
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          setLoading(false);
+          swal("Done", "Sign In Successfully!", "success");
+          setFormErrors(false);
+          setFormValue({
+            ...formValue,
+            email: "",
+            password: "",
+          });
+          // ...
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          swal("Oops", errorMessage, "error");
+          // ..
+        });
     } else {
-      swal("Oops", "Something went wrong!", "error");
+      swal("Oops", "Please fill all the fields!", "error");
     }
-    console.log(formInitialValue, "setFormInitialValue");
   };
 
   function ValidateEmail(mail) {
@@ -58,17 +79,17 @@ const SignUpFrom = () => {
                     type="email"
                     name="email"
                     placeholder="Email"
-                    value={formInitialValue.email}
+                    value={formValue.email}
                     onChange={(e) =>
-                      setFormInitialValue({
-                        ...formInitialValue,
+                      setFormValue({
+                        ...formValue,
                         email: e.target.value,
                       })
                     }
                   />
                 </div>
                 <p className="text-danger mb-0">
-                  {formErrors && formInitialValue.email === ""
+                  {formErrors && formValue.email === ""
                     ? "Email is required"
                     : ""}
                 </p>
@@ -80,10 +101,10 @@ const SignUpFrom = () => {
                       type={passwordType}
                       name="password"
                       placeholder="Password"
-                      value={formInitialValue.password}
+                      value={formValue.password}
                       onChange={(e) =>
-                        setFormInitialValue({
-                          ...formInitialValue,
+                        setFormValue({
+                          ...formValue,
                           password: e.target.value,
                         })
                       }
@@ -103,7 +124,7 @@ const SignUpFrom = () => {
                   </div>
                 </div>
                 <p className="text-danger mb-0">
-                  {formErrors && formInitialValue.password === ""
+                  {formErrors && formValue.password === ""
                     ? "Password is required"
                     : ""}
                 </p>
@@ -113,7 +134,7 @@ const SignUpFrom = () => {
                   className="fluid bg-primary submit_btn text-white border-1 py-2 w-100 mt-3 mt-lg-4"
                   onClick={(e) => handleSubmit(e)}
                 >
-                  Submit
+                  {Loading ? "Loading..." : "Submit"}
                 </button>
               </div>
             </form>

@@ -1,7 +1,7 @@
 import { withRouter } from "react-router-dom";
 import { useState } from "react";
 import SiderBar from "./SiderBar";
-import Logo from "../image/keshav saini (11).gif";
+import Logo from "../image/logo.svg";
 const Headers = ({ history }) => {
   const pathname = window.location.pathname;
   const [active, setActive] = useState(pathname);
@@ -12,7 +12,14 @@ const Headers = ({ history }) => {
         <div className="container d-flex  align-items-center justify-content-between  position-relative z-index-100">
           <div>
             <span>
-              <img className="Logo" src={Logo} alt="logo" />
+              <img
+                onClick={() => {
+                  history.push("/");
+                }}
+                className="Logo cursor-pointer"
+                src={Logo}
+                alt="logo"
+              />
             </span>
           </div>
           <div className="d-none d-xl-block">
@@ -23,10 +30,10 @@ const Headers = ({ history }) => {
                   setActive("/");
                 }}
                 className={`${
-                  active === "/" ? "active" : ""
+                  active === "/" ? "active" : "text-white"
                 }  mx-2 cursor-pointer navbar-text`}
               >
-                Home
+                <span>Home</span>
               </li>
               <li
                 onClick={() => {
@@ -34,10 +41,10 @@ const Headers = ({ history }) => {
                   setActive("/signup");
                 }}
                 className={`${
-                  active === "/signup" ? "active" : ""
+                  active === "/signup" ? "active" : "text-white"
                 } mx-2 cursor-pointer navbar-text`}
               >
-                SignUp/Login
+                <span> SignUp/Login</span>
               </li>
               <li
                 onClick={() => {
@@ -45,10 +52,10 @@ const Headers = ({ history }) => {
                   setActive("/loginsecond");
                 }}
                 className={`${
-                  active === "/loginsecond" ? "active" : ""
+                  active === "/loginsecond" ? "active" : "text-white"
                 } mx-2 cursor-pointer navbar-text`}
               >
-                Login2
+                <span>Login2</span>
               </li>
               <li
                 onClick={() => {
@@ -56,10 +63,10 @@ const Headers = ({ history }) => {
                   setActive("/star");
                 }}
                 className={`${
-                  active === "/star" ? "active" : ""
+                  active === "/star" ? "active" : "text-white"
                 } mx-2 cursor-pointer navbar-text`}
               >
-                About/Star
+                <span> About/Star</span>
               </li>
               <li
                 onClick={() => {
@@ -67,10 +74,10 @@ const Headers = ({ history }) => {
                   setActive("/lottie");
                 }}
                 className={`${
-                  active === "/lottie" ? "active" : ""
+                  active === "/lottie" ? "active" : "text-white"
                 } mx-2 cursor-pointer navbar-text`}
               >
-                Lottie Animation/Animation
+                <span> Lottie Animation/Animation</span>
               </li>
               <li
                 onClick={() => {
@@ -78,10 +85,10 @@ const Headers = ({ history }) => {
                   setActive("/locomotive");
                 }}
                 className={`${
-                  active === "/locomotive" ? "active" : ""
+                  active === "/locomotive" ? "active" : "text-white"
                 } mx-2 cursor-pointer navbar-text`}
               >
-                Locomotive Animation
+                <span> Locomotive Animation</span>
               </li>
               <li
                 onClick={() => {
@@ -89,10 +96,10 @@ const Headers = ({ history }) => {
                   setActive("/roadmap");
                 }}
                 className={`${
-                  active === "/roadmap" ? "active" : ""
+                  active === "/roadmap" ? "active" : "text-white"
                 } mx-2 cursor-pointer navbar-text`}
               >
-                Roadmap
+                <span>Roadmap</span>
               </li>
               <li
                 onClick={() => {
@@ -100,10 +107,10 @@ const Headers = ({ history }) => {
                   setActive("/changecolor");
                 }}
                 className={`${
-                  active === "/changecolor" ? "active" : ""
+                  active === "/changecolor" ? "active" : "text-white"
                 } mx-2 cursor-pointer navbar-text`}
               >
-                Change Color Box
+                <span>Change Color Box</span>
               </li>
               <li
                 onClick={() => {
@@ -111,11 +118,11 @@ const Headers = ({ history }) => {
                   setActive("/whatsapp");
                 }}
                 className={`${
-                  active === "/whatsapp" ? "active" : ""
+                  active === "/whatsapp" ? "active" : "text-white"
                 } mx-2 cursor-pointer navbar-text`}
               >
-                WhatsApp
-              </li>{" "}
+                <span>WhatsApp</span>
+              </li>
             </ul>
           </div>
           <div className="d-xl-none">

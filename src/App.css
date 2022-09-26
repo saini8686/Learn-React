@@ -1,10 +1,26 @@
-.active {
-    color: red
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
+
+
+.active span {
+    position: relative;
+    color: black;
+}
+
+.active span::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    background-color: black;
+    bottom: -5px;
 }
 
 body,
 html {
     background-color: black !important;
+    font-family: 'Comic Neue', cursive;
+
     /* overflow-x: hidden; */
 }
 
@@ -1248,14 +1264,14 @@ html.has-scroll-dragging {
 }
 
 .Logo {
-    width: 70px;
+    width: 120px;
     object-fit: cover;
 }
 
 .navbar-bg {
     position: relative;
     z-index: 10;
-    background: white;
+    background: linear-gradient(129.2deg, #FF318A 0.18%, #6BA3FF 46.54%, #00E7B7 78.94%);
 }
 
 
@@ -1265,7 +1281,7 @@ html.has-scroll-dragging {
     height: 3px;
     display: block;
     margin: 4px 0px;
-    background-color: #000;
+    background-color: #fff;
     border-radius: 2px;
 }
 

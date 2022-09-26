@@ -36,7 +36,7 @@ const SiderBar = ({ pathname, active, setActive, history }) => {
                 active === "/" ? "active" : ""
               }  mx-2 cursor-pointer navbar-text`}
             >
-              Home
+              <span>Home</span>
             </li>
             <li
               onClick={() => {
@@ -48,7 +48,7 @@ const SiderBar = ({ pathname, active, setActive, history }) => {
                 active === "/signup" ? "active" : ""
               } mx-2 cursor-pointer navbar-text`}
             >
-              SignUp/Login
+              <span> SignUp/Login</span>
             </li>
             <li
               onClick={() => {
@@ -60,7 +60,7 @@ const SiderBar = ({ pathname, active, setActive, history }) => {
                 active === "/loginsecond" ? "active" : ""
               } mx-2 cursor-pointer navbar-text`}
             >
-              Login2
+              <span>Login2</span>
             </li>
             <li
               onClick={() => {
@@ -72,7 +72,7 @@ const SiderBar = ({ pathname, active, setActive, history }) => {
                 active === "/star" ? "active" : ""
               } mx-2 cursor-pointer navbar-text`}
             >
-              About/Star
+              <span> About/Star</span>
             </li>
             <li
               onClick={() => {
@@ -84,7 +84,7 @@ const SiderBar = ({ pathname, active, setActive, history }) => {
                 active === "/lottie" ? "active" : ""
               } mx-2 cursor-pointer navbar-text`}
             >
-              Lottie Animation/Animation
+              <span> Lottie Animation/Animation</span>
             </li>
             <li
               onClick={() => {
@@ -96,7 +96,7 @@ const SiderBar = ({ pathname, active, setActive, history }) => {
                 active === "/locomotive" ? "active" : ""
               } mx-2 cursor-pointer navbar-text`}
             >
-              Locomotive Animation
+              <span> Locomotive Animation</span>
             </li>
             <li
               onClick={() => {
@@ -108,7 +108,7 @@ const SiderBar = ({ pathname, active, setActive, history }) => {
                 active === "/roadmap" ? "active" : ""
               } mx-2 cursor-pointer navbar-text`}
             >
-              Roadmap
+              <span>Roadmap</span>
             </li>
             <li
               onClick={() => {
@@ -120,7 +120,7 @@ const SiderBar = ({ pathname, active, setActive, history }) => {
                 active === "/changecolor" ? "active" : ""
               } mx-2 cursor-pointer navbar-text`}
             >
-              Change Color Box
+              <span> Change Color Box</span>
             </li>
             <li
               onClick={() => {
@@ -132,8 +132,8 @@ const SiderBar = ({ pathname, active, setActive, history }) => {
                 active === "/whatsapp" ? "active" : ""
               } mx-2 cursor-pointer navbar-text`}
             >
-              WhatsApp
-            </li>{" "}
+              <span>WhatsApp</span>
+            </li>
           </ul>
         </Offcanvas.Body>
       </Offcanvas>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import LoginFrom from "./LoginFrom";
-import SignUp from "./SignUp";
 
 const Home = () => {
   const initialValues = {
@@ -60,8 +59,6 @@ const Home = () => {
   };
   return (
     <>
-      {" "}
-      <SignUp />
       <div className="container my-4 my-lg-5 w-100">
         <div className="row justify-content-center">
           <div className="col-md-6 col-xl-5 col-xxl-4">
