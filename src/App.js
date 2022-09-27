@@ -21,12 +21,10 @@ import PreLoader from "./components/common/PreLoader";
 
 function App() {
   const containerRef = useRef(null);
-  const [show, setShow] = useState(false);
-  console.log(show, "hlo");
   AOS.init({
     once: true,
   });
-
+  const localvalue = localStorage.getItem("show");
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -57,31 +55,40 @@ function App() {
           >
             <div className="App" data-scroll-container ref={containerRef}>
               <Router>
-                <Header show={show} />
+                <Header />
                 <Switch>
-                  <Route exact path="/home">
-                    <Home />
-                  </Route>
-                  <Route exact path="/">
-                    <SignUp setShow={setShow} />
-                  </Route>
-                  <Route exact path="/star" component={StarRating} />
-                  <Route exact path="/signup" component={SignUpFrom} />
-                  <Route
-                    exact
-                    path="/loginsecond"
-                    component={LoginFromSecond}
-                  />
-                  <Route exact path="/lottie" component={LottieAnimation} />
-                  <Route
-                    exact
-                    path="/locomotive"
-                    component={LocomotiveAnimation}
-                  />
-                  <Route exact path="/roadmap" component={Roadmap} />
-                  <Route exact path="/whatsapp" component={WhatsApp} />
+                  {localvalue ? (
+                    <Route exact path="/">
+                      <SignUp />
+                    </Route>
+                  ) : (
+                    <>
+                      <Route exact path="/home">
+                        <Home />
+                      </Route>
+                      <Route exact path="/star" component={StarRating} />
+                      <Route exact path="/signup" component={SignUpFrom} />
+                      <Route
+                        exact
+                        path="/loginsecond"
+                        component={LoginFromSecond}
+                      />
+                      <Route exact path="/lottie" component={LottieAnimation} />
+                      <Route
+                        exact
+                        path="/locomotive"
+                        component={LocomotiveAnimation}
+                      />
+                      <Route exact path="/roadmap" component={Roadmap} />
+                      <Route exact path="/whatsapp" component={WhatsApp} />
 
-                  <Route exact path="/changecolor" component={ChangeColorBox} />
+                      <Route
+                        exact
+                        path="/changecolor"
+                        component={ChangeColorBox}
+                      />
+                    </>
+                  )}
 
                   <Route exact path="" component={NotFound} />
                 </Switch>
