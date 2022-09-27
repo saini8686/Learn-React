@@ -58,10 +58,6 @@ function App() {
                 <Header />
                 <Switch>
                   {localvalue ? (
-                    <Route exact path="/">
-                      <SignUp />
-                    </Route>
-                  ) : (
                     <>
                       <Route exact path="/home">
                         <Home />
@@ -87,6 +83,12 @@ function App() {
                         path="/changecolor"
                         component={ChangeColorBox}
                       />
+                    </>
+                  ) : (
+                    <>
+                      <Route exact path="/">
+                        <SignUp />
+                      </Route>
                     </>
                   )}
 
