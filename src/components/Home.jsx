@@ -1,9 +1,9 @@
 import React from "react";
-import SignUp from "./SignUp";
+
 const Home = () => {
   return (
     <>
-      <SignUp />
+      <div className="text-white">Home</div>
     </>
   );
 };

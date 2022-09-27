@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LoginFrom from "./LoginFrom";
 
-const Home = () => {
+const SignUpFrom = () => {
   const initialValues = {
     username: "",
     email: "",
@@ -122,4 +122,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default SignUpFrom;

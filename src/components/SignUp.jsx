@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import swal from "sweetalert";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { InVisibleEye, VisibleEye } from "./common/Icon";
 import { auth } from "../firebase";
-const SignUpFrom = () => {
+import { withRouter } from "react-router-dom";
+const SignUp = ({ history }) => {
   const initialValues = {
     email: "",
     password: "",
   };
+  const localvalue = localStorage.getItem("show");
+  console.log(localvalue, "localvalue");
   const [formValue, setFormValue] = useState(initialValues);
   const [formErrors, setFormErrors] = useState(false);
   const [Loading, setLoading] = useState(false);
@@ -32,6 +35,8 @@ const SignUpFrom = () => {
           setLoading(false);
           swal("Done", "Sign In Successfully!", "success");
           setFormErrors(false);
+          localStorage.setItem("show", true);
+          history.push("/home");
           setFormValue({
             ...formValue,
             email: "",
@@ -48,7 +53,6 @@ const SignUpFrom = () => {
       swal("Oops", "Please fill all the fields!", "error");
     }
   };
-
   function ValidateEmail(mail) {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
       return true;
@@ -132,7 +136,12 @@ const SignUpFrom = () => {
                 <button
                   type="button"
                   className="fluid bg-primary submit_btn text-white border-1 py-2 w-100 mt-3 mt-lg-4"
-                  onClick={(e) => handleSubmit(e)}
+                  disabled={
+                    formValue.email === "" || formValue.password.length <= 7
+                  }
+                  onClick={(e) => {
+                    handleSubmit(e);
+                  }}
                 >
                   {Loading ? "Loading..." : "Submit"}
                 </button>
@@ -145,4 +154,4 @@ const SignUpFrom = () => {
   );
 };
 
-export default SignUpFrom;
+export default withRouter(SignUp);

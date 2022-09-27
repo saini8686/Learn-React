@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Header from "./components/common/Header";
 import SignUpFrom from "./components/SignUpFrom";
+import SignUp from "./components/SignUp";
 import LoginFromSecond from "./components/LoginFromSecond";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -20,7 +21,8 @@ import PreLoader from "./components/common/PreLoader";
 
 function App() {
   const containerRef = useRef(null);
-
+  const [show, setShow] = useState(false);
+  console.log(show, "hlo");
   AOS.init({
     once: true,
   });
@@ -55,9 +57,14 @@ function App() {
           >
             <div className="App" data-scroll-container ref={containerRef}>
               <Router>
-                <Header />
+                <Header show={show} />
                 <Switch>
-                  <Route exact path="/" component={Home} />
+                  <Route exact path="/home">
+                    <Home />
+                  </Route>
+                  <Route exact path="/">
+                    <SignUp setShow={setShow} />
+                  </Route>
                   <Route exact path="/star" component={StarRating} />
                   <Route exact path="/signup" component={SignUpFrom} />
                   <Route
