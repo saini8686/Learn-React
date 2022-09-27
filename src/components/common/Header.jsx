@@ -136,7 +136,7 @@ const Headers = ({ history, show, setShow }) => {
                   }}
                   className={`${
                     active === "/" ? "active" : "text-white"
-                  } mx-2 cursor-pointer navbar-text`}
+                  } mx-2 cursor-pointer border-0 bg-transparent navbar-text`}
                 >
                   <span>Log Out</span>
                 </button>

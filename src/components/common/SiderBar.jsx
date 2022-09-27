@@ -24,7 +24,7 @@ const SiderBar = ({
         <div className="humburger-menu">
           <span className="mb-1"></span>
           <span className="mb-1"></span>
-          <span className="mb-1"></span>
+          <span className=""></span>
         </div>
       </Button>
       <Offcanvas show={show} onHide={handleClose} responsive="xl">
@@ -38,6 +38,7 @@ const SiderBar = ({
                 onClick={() => {
                   history.push("/home");
                   setActive("/home");
+                  handleClose();
                 }}
                 className={`${
                   active === "/home" ? "active" : "text-white"
@@ -49,6 +50,7 @@ const SiderBar = ({
                 onClick={() => {
                   history.push("/signup");
                   setActive("/signup");
+                  handleClose();
                 }}
                 className={`${
                   active === "/signup" ? "active" : "text-white"
@@ -60,6 +62,7 @@ const SiderBar = ({
                 onClick={() => {
                   history.push("/loginsecond");
                   setActive("/loginsecond");
+                  handleClose();
                 }}
                 className={`${
                   active === "/loginsecond" ? "active" : "text-white"
@@ -71,6 +74,7 @@ const SiderBar = ({
                 onClick={() => {
                   history.push("/star");
                   setActive("/star");
+                  handleClose();
                 }}
                 className={`${
                   active === "/star" ? "active" : "text-white"
@@ -82,6 +86,7 @@ const SiderBar = ({
                 onClick={() => {
                   history.push("/lottie");
                   setActive("/lottie");
+                  handleClose();
                 }}
                 className={`${
                   active === "/lottie" ? "active" : "text-white"
@@ -93,6 +98,7 @@ const SiderBar = ({
                 onClick={() => {
                   history.push("/locomotive");
                   setActive("/locomotive");
+                  handleClose();
                 }}
                 className={`${
                   active === "/locomotive" ? "active" : "text-white"
@@ -104,6 +110,7 @@ const SiderBar = ({
                 onClick={() => {
                   history.push("/roadmap");
                   setActive("/roadmap");
+                  handleClose();
                 }}
                 className={`${
                   active === "/roadmap" ? "active" : "text-white"
@@ -115,6 +122,7 @@ const SiderBar = ({
                 onClick={() => {
                   history.push("/changecolor");
                   setActive("/changecolor");
+                  handleClose();
                 }}
                 className={`${
                   active === "/changecolor" ? "active" : "text-white"
@@ -126,6 +134,7 @@ const SiderBar = ({
                 onClick={() => {
                   history.push("/whatsapp");
                   setActive("/whatsapp");
+                  handleClose();
                 }}
                 className={`${
                   active === "/whatsapp" ? "active" : "text-white"
@@ -137,11 +146,12 @@ const SiderBar = ({
                 onClick={() => {
                   history.push("/");
                   setActive("/");
+                  handleClose();
                   removehandler();
                 }}
                 className={`${
                   active === "/" ? "active" : "text-white"
-                } mx-2 cursor-pointer navbar-text`}
+                } mx-2 cursor-pointer border-0 bg-transparent navbar-text`}
               >
                 <span>Log Out</span>
               </button>
@@ -152,6 +162,7 @@ const SiderBar = ({
                 onClick={() => {
                   history.push("/");
                   setActive("/");
+                  handleClose();
                 }}
                 className={`${
                   active === "/" ? "active" : "text-white"
