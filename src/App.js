@@ -24,7 +24,7 @@ function App() {
   AOS.init({
     once: true,
   });
-  const localvalue = localStorage.getItem("show");
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -56,37 +56,27 @@ function App() {
             <div className="App" data-scroll-container ref={containerRef}>
               <Router>
                 <Header />
-                {localvalue ? (
-                  <Switch>
-                    <Route exact path="/home" component={Home} />
-                    <Route exact path="/star" component={StarRating} />
-                    <Route exact path="/signup" component={SignUpFrom} />
-                    <Route
-                      exact
-                      path="/loginsecond"
-                      component={LoginFromSecond}
-                    />
-                    <Route exact path="/lottie" component={LottieAnimation} />
-                    <Route
-                      exact
-                      path="/locomotive"
-                      component={LocomotiveAnimation}
-                    />
-                    <Route exact path="/roadmap" component={Roadmap} />
-                    <Route exact path="/whatsapp" component={WhatsApp} />
-                    <Route
-                      exact
-                      path="/changecolor"
-                      component={ChangeColorBox}
-                    />{" "}
-                    <Route exact path="" component={NotFound} />
-                  </Switch>
-                ) : (
-                  <Switch>
-                    <Route exact path="/" component={SignUp} />
-                    <Route exact path="" component={NotFound} />
-                  </Switch>
-                )}
+                <Switch>
+                  <Route exact path="/" component={SignUp} />
+                  <Route exact path="/home" component={Home} />
+                  <Route exact path="/star" component={StarRating} />
+                  <Route exact path="/signup" component={SignUpFrom} />
+                  <Route
+                    exact
+                    path="/loginsecond"
+                    component={LoginFromSecond}
+                  />
+                  <Route exact path="/lottie" component={LottieAnimation} />
+                  <Route
+                    exact
+                    path="/locomotive"
+                    component={LocomotiveAnimation}
+                  />
+                  <Route exact path="/roadmap" component={Roadmap} />
+                  <Route exact path="/whatsapp" component={WhatsApp} />
+                  <Route exact path="/changecolor" component={ChangeColorBox} />
+                  <Route exact path="" component={NotFound} />
+                </Switch>
               </Router>
             </div>
           </LocomotiveScrollProvider>
