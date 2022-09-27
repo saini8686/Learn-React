@@ -83,12 +83,14 @@ function App() {
                         path="/changecolor"
                         component={ChangeColorBox}
                       />
+                      <Route exact path="" component={NotFound} />
                     </>
                   ) : (
                     <>
                       <Route exact path="/">
                         <SignUp />
                       </Route>
+                      <Route exact path="" component={NotFound} />
                     </>
                   )}
 
