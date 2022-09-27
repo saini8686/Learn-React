@@ -33,20 +33,6 @@ const SiderBar = ({
         </Offcanvas.Header>
         <Offcanvas.Body>
           {localvalue ? (
-            <ul className=" d-xl-none mb-0">
-              <li
-                onClick={() => {
-                  history.push("/");
-                  setActive("/");
-                }}
-                className={`${
-                  active === "/" ? "active" : "text-white"
-                }  mx-2 cursor-pointer navbar-text`}
-              >
-                <span>Sign In</span>
-              </li>
-            </ul>
-          ) : (
             <ul className=" d-xl-none list-unstyled mb-0">
               <li
                 onClick={() => {
@@ -159,6 +145,20 @@ const SiderBar = ({
               >
                 <span>Log Out</span>
               </button>
+            </ul>
+          ) : (
+            <ul className=" d-xl-none mb-0">
+              <li
+                onClick={() => {
+                  history.push("/");
+                  setActive("/");
+                }}
+                className={`${
+                  active === "/" ? "active" : "text-white"
+                }  mx-2 cursor-pointer navbar-text`}
+              >
+                <span>Sign In</span>
+              </li>
             </ul>
           )}
         </Offcanvas.Body>

@@ -31,20 +31,6 @@ const Headers = ({ history, show, setShow }) => {
               <ul className=" d-flex list-unstyled mb-0">
                 <li
                   onClick={() => {
-                    history.push("/");
-                    setActive("/");
-                  }}
-                  className={`${
-                    active === "/" ? "active" : "text-white"
-                  }  mx-2 cursor-pointer navbar-text`}
-                >
-                  <span>Sign In</span>
-                </li>
-              </ul>
-            ) : (
-              <ul className=" d-flex list-unstyled mb-0">
-                <li
-                  onClick={() => {
                     history.push("/home");
                     setActive("/home");
                   }}
@@ -154,6 +140,20 @@ const Headers = ({ history, show, setShow }) => {
                 >
                   <span>Log Out</span>
                 </button>
+              </ul>
+            ) : (
+              <ul className=" d-flex list-unstyled mb-0">
+                <li
+                  onClick={() => {
+                    history.push("/");
+                    setActive("/");
+                  }}
+                  className={`${
+                    active === "/" ? "active" : "text-white"
+                  }  mx-2 cursor-pointer navbar-text`}
+                >
+                  <span>Sign In</span>
+                </li>
               </ul>
             )}
           </div>
