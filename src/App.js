@@ -21,6 +21,7 @@ import PreLoader from "./components/common/PreLoader";
 
 function App() {
   const containerRef = useRef(null);
+
   AOS.init({
     once: true,
   });
@@ -57,8 +58,12 @@ function App() {
               <Router>
                 <Header />
                 <Switch>
-                  <Route exact path="/" component={SignUp} />
-                  <Route exact path="/home" component={Home} />
+                  <Route exact path="/home">
+                    <Home />
+                  </Route>
+                  <Route exact path="/">
+                    <SignUp />
+                  </Route>
                   <Route exact path="/star" component={StarRating} />
                   <Route exact path="/signup" component={SignUpFrom} />
                   <Route
@@ -74,7 +79,9 @@ function App() {
                   />
                   <Route exact path="/roadmap" component={Roadmap} />
                   <Route exact path="/whatsapp" component={WhatsApp} />
+
                   <Route exact path="/changecolor" component={ChangeColorBox} />
+
                   <Route exact path="" component={NotFound} />
                 </Switch>
               </Router>
