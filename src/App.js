@@ -78,16 +78,15 @@ function App() {
                       exact
                       path="/changecolor"
                       component={ChangeColorBox}
-                    />
+                    />{" "}
+                    <Route exact path="" component={NotFound} />
                   </Switch>
                 ) : (
                   <Switch>
-                    <Route exact path="/" component={SignUp} />{" "}
+                    <Route exact path="/" component={SignUp} />
+                    <Route exact path="" component={NotFound} />
                   </Switch>
                 )}
-                <Switch>
-                  <Route exact path="" component={NotFound} />
-                </Switch>
               </Router>
             </div>
           </LocomotiveScrollProvider>
