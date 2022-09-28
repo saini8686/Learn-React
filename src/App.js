@@ -22,7 +22,7 @@ import PreLoader from "./components/common/PreLoader";
 function App() {
   const containerRef = useRef(null);
   const localvalue = localStorage.getItem("show");
-  const PrivateRoute = () => {
+  const PrivateRoute = (props) => {
     const localvalue = localStorage.getItem("show");
     if (localvalue) {
       return (
