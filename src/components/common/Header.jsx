@@ -2,7 +2,7 @@ import { withRouter } from "react-router-dom";
 import { useState } from "react";
 import SiderBar from "./SiderBar";
 import Logo from "../image/logo.svg";
-const Headers = ({ history, show, setShow }) => {
+const Headers = ({ history }) => {
   const pathname = window.location.pathname;
   const [active, setActive] = useState(pathname);
   const localvalue = localStorage.getItem("show");
@@ -18,7 +18,7 @@ const Headers = ({ history, show, setShow }) => {
             <span>
               <img
                 onClick={() => {
-                  history.push("/home");
+                  localvalue ? history.push("/home") : history.push("/");
                 }}
                 className="Logo cursor-pointer"
                 src={Logo}
@@ -131,12 +131,9 @@ const Headers = ({ history, show, setShow }) => {
                 <button
                   onClick={() => {
                     history.push("/");
-                    setActive("/");
                     removehandler();
                   }}
-                  className={`${
-                    active === "/" ? "active" : "text-white"
-                  } mx-2 cursor-pointer border-0 bg-transparent navbar-text`}
+                  className=" mx-2 cursor-pointer border-0 bg-transparent text-white navbar-text"
                 >
                   <span>Log Out</span>
                 </button>
