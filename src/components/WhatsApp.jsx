@@ -1,19 +1,27 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ReactWhatsapp from "react-whatsapp";
 import MainFilter from "./Filter/MainFilter";
 import FilterData from "./FilterData";
+import { withRouter } from "react-router-dom";
 
-const WhatsApp = () => {
+const WhatsApp = ({ history }) => {
   const [number, setNumber] = useState("");
   const [message, setMessage] = useState("");
   const ref = useRef(null);
+  const localvalue = localStorage.getItem("show");
 
+  useEffect(() => {
+    if (localvalue === "false" || localvalue === null) {
+      console.log(localvalue, "sjdfkals");
+      history.push("/");
+    }
+  }, [localvalue]);
   console.log(number, "number");
   return (
     <>
       <ReactWhatsapp
         className="text-white bg-transparent border-0 text-decoration-underline my-4"
-        number="+918307373978"
+        number="+919034381732"
         message="Hello Keshav saini"
       >
         Direct Chat With Me On what's app
@@ -71,4 +79,4 @@ const WhatsApp = () => {
   );
 };
 
-export default WhatsApp;
+export default withRouter(WhatsApp);

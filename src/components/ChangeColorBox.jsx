@@ -1,7 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
 
-const ChangeColorBoxOnType = () => {
+const ChangeColorBoxOnType = ({ history }) => {
   const [value, getValue] = useState("");
+  const localvalue = localStorage.getItem("show");
+
+  useEffect(() => {
+    if (localvalue === "false" || localvalue === null) {
+      console.log(localvalue, "sjdfkals");
+      history.push("/");
+    }
+  }, [localvalue]);
   return (
     <>
       <div className="d-flex justify-content-center flex-column align-items-center mt-5 ">
@@ -26,4 +35,4 @@ const ChangeColorBoxOnType = () => {
   );
 };
 
-export default ChangeColorBoxOnType;
+export default withRouter(ChangeColorBoxOnType);

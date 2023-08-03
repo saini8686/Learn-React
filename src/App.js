@@ -18,20 +18,10 @@ import NotFound from "./NotFound";
 import ChangeColorBox from "./components/ChangeColorBox";
 import WhatsApp from "./components/WhatsApp";
 import PreLoader from "./components/common/PreLoader";
-
+import LoginIn from "./components/LoginIn";
 function App() {
   const containerRef = useRef(null);
-  const localvalue = localStorage.getItem("show");
-  const PrivateRoute = (props) => {
-    const localvalue = localStorage.getItem("show");
-    if (localvalue) {
-      return (
-        <Route exact={true} path={props.path} component={props.component} />
-      );
-    } else {
-      <SignUp />;
-    }
-  };
+
   AOS.init({
     once: true,
   });
@@ -68,38 +58,25 @@ function App() {
               <Router>
                 <Header />
                 <Switch>
-                  <PrivateRoute exact path="/home">
-                    <Home />
-                  </PrivateRoute>
-                  <Route exact={true} path="/">
-                    <SignUp />
-                  </Route>
-                  <PrivateRoute exact path="/star" component={StarRating} />
-                  <PrivateRoute exact path="/signup" component={SignUpFrom} />
-                  <PrivateRoute
+                  <Route exact path="/home" component={Home} />
+                  <Route exact path="/" component={SignUp} />
+                  <Route exact path="/loginIn" component={LoginIn} />
+                  <Route exact path="/star" component={StarRating} />
+                  <Route exact path="/signup" component={SignUpFrom} />
+                  <Route
                     exact
                     path="/loginsecond"
                     component={LoginFromSecond}
                   />
-                  <PrivateRoute
-                    exact
-                    path="/lottie"
-                    component={LottieAnimation}
-                  />
-                  <PrivateRoute
+                  <Route exact path="/lottie" component={LottieAnimation} />
+                  <Route
                     exact
                     path="/locomotive"
                     component={LocomotiveAnimation}
                   />
-                  <PrivateRoute exact path="/roadmap" component={Roadmap} />
-                  <PrivateRoute exact path="/whatsapp" component={WhatsApp} />
-
-                  <PrivateRoute
-                    exact
-                    path="/changecolor"
-                    component={ChangeColorBox}
-                  />
-
+                  <Route exact path="/roadmap" component={Roadmap} />
+                  <Route exact path="/whatsapp" component={WhatsApp} />
+                  <Route exact path="/changecolor" component={ChangeColorBox} />
                   <Route exact path="" component={NotFound} />
                 </Switch>
               </Router>

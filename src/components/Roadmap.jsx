@@ -1,11 +1,12 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useEffect } from "react";
+import { withRouter } from "react-router-dom";
 // import { StraightDivider } from "../components/common/Icon";
 import { data } from "./RoadmapData";
 
 gsap.registerPlugin(ScrollTrigger);
-const Roadmap = () => {
+const Roadmap = ({ history }) => {
   const flameAndAcitveLineHandler = () => {
     //=============== GSAP SCROLL-TRIGGER ANIMATION (FIRE FLAME AND ACTIVE LINE) ==================//
     let tl = gsap.timeline({
@@ -54,6 +55,14 @@ const Roadmap = () => {
   useEffect(() => {
     flameAndAcitveLineHandler();
   }, []);
+  const localvalue = localStorage.getItem("show");
+
+  useEffect(() => {
+    if (localvalue === "false" || localvalue === null) {
+      console.log(localvalue, "sjdfkals");
+      history.push("/");
+    }
+  }, [localvalue]);
 
   return (
     <>
@@ -119,4 +128,4 @@ const Roadmap = () => {
   );
 };
 
-export default Roadmap;
+export default withRouter(Roadmap);

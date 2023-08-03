@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { withRouter } from "react-router-dom";
 
-const LocomotiveAnimation = () => {
+const LocomotiveAnimation = ({ history }) => {
+  const localvalue = localStorage.getItem("show");
+
+  useEffect(() => {
+    if (localvalue === "false" || localvalue === null) {
+      console.log(localvalue, "sjdfkals");
+      history.push("/");
+    }
+  }, [localvalue]);
   return (
     <>
       <section className="section py-4" data-scroll-section>
@@ -102,4 +111,4 @@ const LocomotiveAnimation = () => {
   );
 };
 
-export default LocomotiveAnimation;
+export default withRouter(LocomotiveAnimation);

@@ -6,8 +6,9 @@ import {
   MouseParallaxContainer,
 } from "react-parallax-mouse";
 import { Rating } from "react-simple-star-rating";
+import { withRouter } from "react-router-dom";
 
-const StarRating = (props) => {
+const StarRating = ({ history }) => {
   const [isOnce, setOnce] = useState(false);
   const [value, setValue] = useState(false);
 
@@ -27,6 +28,14 @@ const StarRating = (props) => {
     setRating2(rate);
     // other logic
   };
+  const localvalue = localStorage.getItem("show");
+
+  useEffect(() => {
+    if (localvalue === "false" || localvalue === null) {
+      console.log(localvalue, "sjdfkals");
+      history.push("/");
+    }
+  }, [localvalue]);
   return (
     <>
       <div className="mt-4">
@@ -185,4 +194,4 @@ const StarRating = (props) => {
   );
 };
 
-export default StarRating;
+export default withRouter(StarRating);

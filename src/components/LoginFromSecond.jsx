@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import swal from "sweetalert";
 import Table from "react-bootstrap/Table";
 import uploadimages from "../components/image/uploadImg.png";
 import { InVisibleEye, VisibleEye } from "./common/Icon";
+import { withRouter } from "react-router-dom";
 
-const LoginFromSecond = () => {
+const LoginFromSecond = ({ history }) => {
   const [uploadImage, setUploadImage] = useState();
 
   const initialValues = {
@@ -135,6 +136,14 @@ const LoginFromSecond = () => {
     }
     setUploadImage(image);
   };
+  const localvalue = localStorage.getItem("show");
+
+  useEffect(() => {
+    if (localvalue === "false" || localvalue === null) {
+      console.log(localvalue, "sjdfkals");
+      history.push("/");
+    }
+  }, [localvalue]);
   return (
     <>
       <div className="container my-4 my-lg-5 py-5">
@@ -374,4 +383,4 @@ const LoginFromSecond = () => {
   );
 };
 
-export default LoginFromSecond;
+export default withRouter(LoginFromSecond);

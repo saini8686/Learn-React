@@ -1,14 +1,16 @@
 import { withRouter } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SiderBar from "./SiderBar";
 import Logo from "../image/logo.svg";
 const Headers = ({ history }) => {
   const pathname = window.location.pathname;
   const [active, setActive] = useState(pathname);
   const localvalue = localStorage.getItem("show");
+
   const removehandler = () => {
     localStorage.removeItem("show");
   };
+  console.log(localvalue, "ft7yuimkl,");
 
   return (
     <>
@@ -27,7 +29,7 @@ const Headers = ({ history }) => {
             </span>
           </div>
           <div className="d-none d-xl-block">
-            {localvalue ? (
+            {localvalue !== null && localvalue ? (
               <ul className=" d-flex list-unstyled mb-0">
                 <li
                   onClick={() => {
@@ -150,6 +152,17 @@ const Headers = ({ history }) => {
                   }  mx-2 cursor-pointer navbar-text`}
                 >
                   <span>Sign In</span>
+                </li>
+                <li
+                  onClick={() => {
+                    history.push("/loginIn");
+                    setActive("/loginIn");
+                  }}
+                  className={`${
+                    active === "/loginIn" ? "active" : "text-white"
+                  }  mx-2 cursor-pointer navbar-text`}
+                >
+                  <span>Login In</span>
                 </li>
               </ul>
             )}

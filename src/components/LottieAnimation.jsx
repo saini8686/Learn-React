@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Lottie from "react-lottie";
 import animationData from "./json/cigarette-man.json";
 import animationData2 from "./json/sweat-grinning-emoji-animation.json";
@@ -6,8 +6,9 @@ import animationData3 from "./json/hello.json";
 import animationData4 from "./json/psychology-spiral.json";
 import PoliceLight from "./PoliceLight";
 import TypeWriterAnimation from "./TypeWriterAnimation";
+import { withRouter } from "react-router-dom";
 
-const LottieAnimation = () => {
+const LottieAnimation = ({ history }) => {
   const defaultOptional = {
     loop: true,
     autoplay: true,
@@ -40,6 +41,14 @@ const LottieAnimation = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const localvalue = localStorage.getItem("show");
+
+  useEffect(() => {
+    if (localvalue === "false" || localvalue === null) {
+      console.log(localvalue, "sjdfkals");
+      history.push("/");
+    }
+  }, [localvalue]);
   return (
     <>
       <PoliceLight />
@@ -80,4 +89,4 @@ const LottieAnimation = () => {
   );
 };
 
-export default LottieAnimation;
+export default withRouter(LottieAnimation);

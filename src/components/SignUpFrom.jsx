@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import LoginFrom from "./LoginFrom";
 
-const SignUpFrom = () => {
+const SignUpFrom = ({ history }) => {
   const initialValues = {
     username: "",
     email: "",
@@ -57,6 +58,15 @@ const SignUpFrom = () => {
     }
     return errors;
   };
+
+  const localvalue = localStorage.getItem("show");
+
+  useEffect(() => {
+    if (localvalue === "false" || localvalue === null) {
+      console.log(localvalue, "sjdfkals");
+      history.push("/");
+    }
+  }, [localvalue]);
   return (
     <>
       <div className="container my-4 my-lg-5 w-100">
@@ -122,4 +132,4 @@ const SignUpFrom = () => {
   );
 };
 
-export default SignUpFrom;
+export default withRouter(SignUpFrom);

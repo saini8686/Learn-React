@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import swal from "sweetalert";
 import {
-  createUserWithEmailAndPassword,
-  // signInWithEmailAndPassword,
+  // createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { InVisibleEye, VisibleEye } from "./common/Icon";
 import { auth } from "../firebase";
 import { withRouter } from "react-router-dom";
-const SignUp = ({ history }) => {
+const LoginIn = ({ history }) => {
   const initialValues = {
     email: "",
     password: "",
@@ -15,6 +15,7 @@ const SignUp = ({ history }) => {
   const localvalue = localStorage.getItem("show");
   useEffect(() => {
     if (localvalue === "true") {
+      console.log(localvalue, "sjdfkals");
       history.push("/home");
     }
   }, [localvalue]);
@@ -28,17 +29,10 @@ const SignUp = ({ history }) => {
     setFormErrors(true);
 
     const validate = ValidateEmail(formValue.email);
-    if (
-      // formValue.name &&
-      // formValue.phone &&
-      formValue.email &&
-      formValue.password &&
-      validate
-    ) {
+    if (formValue.email && formValue.password && validate) {
       setLoading(true);
-      await createUserWithEmailAndPassword(
+      await signInWithEmailAndPassword(
         auth,
-
         formValue.email,
         formValue.password
       )
@@ -88,7 +82,7 @@ const SignUp = ({ history }) => {
         <div className="row justify-content-center">
           <div className="col-md-6 col-xl-5 col-xxl-4">
             <form className="form_bg p-4">
-              <h1 className="mb-4">Sign Up Form</h1>
+              <h1 className="mb-4">Login Form</h1>
               <div className="ui_form">
                 <div className="field mt-3 mt-lg-4  d-flex flex-column">
                   <label className="mb-2"> Email</label>
@@ -168,4 +162,4 @@ const SignUp = ({ history }) => {
   );
 };
 
-export default withRouter(SignUp);
+export default withRouter(LoginIn);

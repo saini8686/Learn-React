@@ -41,7 +41,7 @@ const SiderBar = ({
                   handleClose();
                 }}
                 className={`${
-                  active === "/home" ? "active" : "text-white"
+                  active === "/home" ? "active" : "text-black"
                 }  mx-2 cursor-pointer navbar-text`}
               >
                 <span>Home</span>
@@ -53,7 +53,7 @@ const SiderBar = ({
                   handleClose();
                 }}
                 className={`${
-                  active === "/signup" ? "active" : "text-white"
+                  active === "/signup" ? "active" : "text-black"
                 } mx-2 cursor-pointer navbar-text`}
               >
                 <span> SignUp/Login</span>
@@ -65,7 +65,7 @@ const SiderBar = ({
                   handleClose();
                 }}
                 className={`${
-                  active === "/loginsecond" ? "active" : "text-white"
+                  active === "/loginsecond" ? "active" : "text-black"
                 } mx-2 cursor-pointer navbar-text`}
               >
                 <span>Login2</span>
@@ -77,7 +77,7 @@ const SiderBar = ({
                   handleClose();
                 }}
                 className={`${
-                  active === "/star" ? "active" : "text-white"
+                  active === "/star" ? "active" : "text-black"
                 } mx-2 cursor-pointer navbar-text`}
               >
                 <span> About/Star</span>
@@ -89,7 +89,7 @@ const SiderBar = ({
                   handleClose();
                 }}
                 className={`${
-                  active === "/lottie" ? "active" : "text-white"
+                  active === "/lottie" ? "active" : "text-black"
                 } mx-2 cursor-pointer navbar-text`}
               >
                 <span> Lottie Animation/Animation</span>
@@ -101,7 +101,7 @@ const SiderBar = ({
                   handleClose();
                 }}
                 className={`${
-                  active === "/locomotive" ? "active" : "text-white"
+                  active === "/locomotive" ? "active" : "text-black"
                 } mx-2 cursor-pointer navbar-text`}
               >
                 <span> Locomotive Animation</span>
@@ -113,7 +113,7 @@ const SiderBar = ({
                   handleClose();
                 }}
                 className={`${
-                  active === "/roadmap" ? "active" : "text-white"
+                  active === "/roadmap" ? "active" : "text-black"
                 } mx-2 cursor-pointer navbar-text`}
               >
                 <span>Roadmap</span>
@@ -125,7 +125,7 @@ const SiderBar = ({
                   handleClose();
                 }}
                 className={`${
-                  active === "/changecolor" ? "active" : "text-white"
+                  active === "/changecolor" ? "active" : "text-black"
                 } mx-2 cursor-pointer navbar-text`}
               >
                 <span>Change Color Box</span>
@@ -137,7 +137,7 @@ const SiderBar = ({
                   handleClose();
                 }}
                 className={`${
-                  active === "/whatsapp" ? "active" : "text-white"
+                  active === "/whatsapp" ? "active" : "text-black"
                 } mx-2 cursor-pointer navbar-text`}
               >
                 <span>WhatsApp</span>
@@ -150,7 +150,7 @@ const SiderBar = ({
                   removehandler();
                 }}
                 className={`${
-                  active === "/" ? "active" : "text-white"
+                  active === "/" ? "active" : "text-black"
                 } mx-2 cursor-pointer border-0 bg-transparent navbar-text`}
               >
                 <span>Log Out</span>
@@ -165,7 +165,7 @@ const SiderBar = ({
                   handleClose();
                 }}
                 className={`${
-                  active === "/" ? "active" : "text-white"
+                  active === "/" ? "active" : "text-black"
                 }  mx-2 cursor-pointer navbar-text`}
               >
                 <span>Sign In</span>
